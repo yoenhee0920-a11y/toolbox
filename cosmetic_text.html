@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>화장품 포장·표시광고 법령 정리</title>
+<link rel="apple-touch-icon" href="icon-180.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="화장품 법령정리">
+<meta name="theme-color" content="#152A47">
+<style>
+  :root{
+    --ink:#1B2A3D;
+    --ink-soft:#4A5A70;
+    --paper:#FAF9F6;
+    --panel:#FFFFFF;
+    --line:#E4E1D8;
+    --navy:#22406B;
+    --navy-deep:#152A47;
+    --gold:#B8863B;
+    --ok-bg:#EAF3EC;
+    --ok-fg:#1E6B3C;
+    --no-bg:#FBEAEA;
+    --no-fg:#B23A34;
+    --warn-bg:#FCF3E3;
+    --warn-fg:#8A5A12;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:"Pretendard","Apple SD Gothic Neo","Malgun Gothic",-apple-system,sans-serif;
+    background:var(--paper);
+    color:var(--ink);
+    line-height:1.62;
+  }
+  .layout{display:flex; max-width:1180px; margin:0 auto;}
+  /* Sidebar */
+  nav.side{
+    width:250px; flex-shrink:0; position:sticky; top:0; align-self:flex-start;
+    height:100vh; overflow-y:auto; padding:28px 18px 40px 28px;
+    border-right:1px solid var(--line);
+  }
+  nav.side .brand{
+    font-size:12px; letter-spacing:.04em; color:var(--ink-soft); margin-bottom:4px;
+  }
+  nav.side .title{
+    font-size:17px; font-weight:700; color:var(--navy-deep); margin-bottom:22px; line-height:1.4;
+  }
+  nav.side a{
+    display:block; font-size:13.5px; color:var(--ink-soft); text-decoration:none;
+    padding:7px 10px; border-radius:6px; margin-bottom:2px;
+  }
+  nav.side a:hover{ background:#EFEAE0; color:var(--navy-deep); }
+  nav.side a.active{ background:var(--navy); color:#fff; }
+  .updated{ margin-top:24px; font-size:11.5px; color:#8b8577; border-top:1px solid var(--line); padding-top:14px;}
+
+  main{flex:1; min-width:0; padding:44px 56px 100px;}
+  .hero{ margin-bottom:36px; }
+  .hero h1{
+    font-size:30px; font-weight:800; color:var(--navy-deep); margin:0 0 10px; letter-spacing:-.01em;
+  }
+  .hero p{ color:var(--ink-soft); font-size:15px; margin:0 0 16px; max-width:640px;}
+  .disclaimer{
+    background:var(--warn-bg); color:var(--warn-fg); border:1px solid #EFD9AC;
+    border-radius:10px; padding:12px 16px; font-size:13.5px; display:flex; gap:10px; align-items:flex-start;
+  }
+  .disclaimer b{color:#6b4508;}
+
+  section{ margin-top:52px; scroll-margin-top:20px; }
+  section h2{
+    font-size:21px; font-weight:800; color:var(--navy-deep);
+    border-bottom:2px solid var(--navy); padding-bottom:10px; margin:0 0 16px;
+    display:flex; align-items:baseline; gap:8px;
+  }
+  section h2 .num{ color:var(--gold); }
+  section h3{ font-size:15.5px; font-weight:700; color:var(--navy); margin:26px 0 10px;}
+  section > p.lead{ color:var(--ink-soft); font-size:14px; margin:0 0 14px;}
+
+  table{ width:100%; border-collapse:collapse; background:var(--panel); border-radius:10px; overflow:hidden;
+    box-shadow:0 1px 3px rgba(20,30,50,.06); margin-bottom:8px;}
+  thead th{
+    background:var(--navy); color:#fff; font-size:12.5px; font-weight:600; text-align:left;
+    padding:10px 14px; letter-spacing:.01em;
+  }
+  tbody td{
+    padding:10px 14px; font-size:13.5px; border-top:1px solid var(--line); vertical-align:top; color:var(--ink);
+  }
+  tbody tr:nth-child(even){ background:#FBFAF7; }
+  td.center{ text-align:center; }
+  td.num{ color:var(--ink-soft); font-variant-numeric:tabular-nums; width:34px;}
+
+  .tag{ display:inline-block; padding:2px 9px; border-radius:20px; font-size:12px; font-weight:700; white-space:nowrap;}
+  .tag.ok{ background:var(--ok-bg); color:var(--ok-fg); }
+  .tag.no{ background:var(--no-bg); color:var(--no-fg); }
+
+  .note{ font-size:12.8px; color:var(--ink-soft); margin:8px 0 4px; padding-left:2px;}
+  .note.warn{ color:var(--no-fg); }
+  .note::before{ content:"※ "; }
+
+  .cardgrid{ display:grid; grid-template-columns:1fr 1fr; gap:16px; margin:14px 0 22px;}
+  @media (max-width:760px){ .cardgrid{ grid-template-columns:1fr; } }
+  .fx-card{ background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:16px 18px;
+    box-shadow:0 1px 3px rgba(20,30,50,.05);}
+  .fx-card h4{ margin:0 0 10px; font-size:14.5px; color:var(--navy-deep); }
+  .fx-card .row{ display:flex; gap:8px; margin-bottom:8px; font-size:13px; }
+  .fx-card .row b{ flex-shrink:0; }
+
+  .source-list{ font-size:13px; color:var(--ink-soft); }
+  .source-list li{ margin-bottom:5px; }
+
+  .faq-cat{ font-size:12px; font-weight:700; color:var(--gold); letter-spacing:.02em; margin:26px 0 10px; text-transform:none;}
+  details.faq{
+    background:var(--panel); border:1px solid var(--line); border-radius:10px;
+    margin-bottom:8px; box-shadow:0 1px 3px rgba(20,30,50,.05); overflow:hidden;
+  }
+  details.faq summary{
+    padding:13px 16px; cursor:pointer; font-size:14px; font-weight:600; color:var(--navy-deep);
+    list-style:none; display:flex; gap:10px; align-items:baseline;
+  }
+  details.faq summary::-webkit-details-marker{ display:none; }
+  details.faq summary .qmark{
+    flex-shrink:0; color:#fff; background:var(--navy); border-radius:50%; width:20px; height:20px;
+    font-size:11px; display:inline-flex; align-items:center; justify-content:center; font-weight:700;
+  }
+  details.faq summary::after{
+    content:"+"; margin-left:auto; color:var(--ink-soft); font-size:16px; font-weight:400;
+  }
+  details.faq[open] summary::after{ content:"–"; }
+  details.faq .a{
+    padding:2px 16px 16px 46px; font-size:13.5px; color:var(--ink); line-height:1.7;
+  }
+  details.faq .a .src{ display:block; margin-top:8px; font-size:11.5px; color:var(--ink-soft); }
+
+  /* 문구 검수 도구 */
+  .checker-box{ background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:20px; box-shadow:0 1px 3px rgba(20,30,50,.05); }
+  .checker-box textarea{
+    width:100%; min-height:76px; font-family:inherit; font-size:14.5px; padding:12px 14px;
+    border:1px solid var(--line); border-radius:8px; resize:vertical; color:var(--ink); background:#FDFCFA;
+  }
+  .checker-box textarea:focus{ outline:2px solid var(--navy); outline-offset:1px; }
+  .checker-btn{
+    margin-top:10px; background:var(--navy); color:#fff; border:none; padding:9px 20px;
+    border-radius:8px; font-size:13.5px; font-weight:600; cursor:pointer;
+  }
+  .checker-btn:hover{ background:var(--navy-deep); }
+  .checker-result{
+    margin-top:16px; padding:16px 18px; background:#FDFCFA; border:1px solid var(--line); border-radius:8px;
+    font-size:16px; line-height:2.1; min-height:30px;
+  }
+  .checker-result mark{ border-radius:4px; padding:1px 3px; cursor:help; font-weight:600; }
+  .checker-result mark.r{ background:var(--no-bg); color:var(--no-fg); text-decoration:underline wavy var(--no-fg); }
+  .checker-result mark.y{ background:var(--warn-bg); color:var(--warn-fg); text-decoration:underline wavy var(--warn-fg); }
+  .checker-result mark.g{ background:var(--ok-bg); color:var(--ok-fg); }
+  .checker-legend{ display:flex; gap:16px; flex-wrap:wrap; margin-top:14px; font-size:12.5px; color:var(--ink-soft); }
+  .checker-legend span{ display:inline-flex; align-items:center; gap:6px; }
+  .checker-legend i{ width:12px; height:12px; border-radius:3px; display:inline-block; }
+  .checker-detail{ margin-top:14px; }
+  .checker-detail-item{ font-size:13px; padding:8px 12px; border-radius:8px; margin-bottom:6px; border-left:3px solid; }
+  .checker-detail-item.r{ background:var(--no-bg); border-color:var(--no-fg); color:#7a2723; }
+  .checker-detail-item.y{ background:var(--warn-bg); border-color:var(--warn-fg); color:#6b4508; }
+  .checker-detail-item.g{ background:var(--ok-bg); border-color:var(--ok-fg); color:#154d2a; }
+  .checker-detail-item.sp{ background:#EEF2F7; border-color:var(--navy); color:var(--navy-deep); }
+  .checker-subhead{ font-size:12px; font-weight:700; color:var(--ink-soft); margin:14px 0 6px; letter-spacing:.02em; }
+  .checker-empty{ color:#a39d8e; font-size:13.5px; }
+
+  /* 라벨 체크리스트 */
+  details.checklist-wrap{
+    margin-top:14px; background:var(--panel); border:1px solid var(--line); border-radius:10px;
+    box-shadow:0 1px 3px rgba(20,30,50,.05); overflow:hidden;
+  }
+  details.checklist-wrap summary{
+    padding:12px 16px; cursor:pointer; font-size:13.5px; font-weight:700; color:var(--navy-deep);
+    list-style:none; display:flex; align-items:center; gap:10px; background:#FBFAF7;
+  }
+  details.checklist-wrap summary::-webkit-details-marker{ display:none; }
+  details.checklist-wrap summary::after{ content:"열기 ▾"; margin-left:auto; font-weight:400; color:var(--ink-soft); font-size:12px; }
+  details.checklist-wrap[open] summary::after{ content:"닫기 ▴"; }
+  .checklist-progress{
+    font-size:12px; font-weight:700; color:#fff; background:var(--navy); border-radius:20px; padding:2px 10px;
+  }
+  .checklist-body{ padding:6px 16px 16px; }
+  .checklist-item{
+    display:flex; align-items:flex-start; gap:10px; padding:8px 4px; border-bottom:1px solid #F0EDE4; font-size:13.5px;
+  }
+  .checklist-item:last-child{ border-bottom:none; }
+  .checklist-item input[type="checkbox"]{ margin-top:3px; width:16px; height:16px; accent-color:var(--navy); flex-shrink:0; cursor:pointer; }
+  .checklist-item label{ cursor:pointer; line-height:1.5; }
+  .checklist-item.done label{ color:#9a9484; text-decoration:line-through; }
+  .checklist-reset{
+    margin-top:10px; background:none; border:1px solid var(--line); color:var(--ink-soft);
+    padding:6px 14px; border-radius:8px; font-size:12.5px; cursor:pointer;
+  }
+  .checklist-reset:hover{ background:#F5F2EA; }
+  .copy-btn{
+    margin-top:10px; margin-left:8px; background:#fff; color:var(--navy); border:1.5px solid var(--navy);
+    padding:8px 16px; border-radius:8px; font-size:13px; font-weight:600; cursor:pointer;
+  }
+  .copy-btn:hover{ background:#EEF2F7; }
+  .copy-btn.copied{ background:var(--ok-bg); border-color:var(--ok-fg); color:var(--ok-fg); }
+
+  footer.page{
+    margin-top:60px; padding-top:18px; border-top:1px solid var(--line);
+    font-size:12px; color:#9a9484;
+  }
+
+  code.legal{ font-size:12px; background:#EFEAE0; color:var(--navy-deep); padding:1px 6px; border-radius:5px; }
+
+  @media print{
+    nav.side{ display:none; }
+    main{ padding:0; }
+    .layout{ display:block; }
+  }
+
+  @media (max-width:820px){
+    .layout{ display:block; }
+    nav.side{
+      width:auto; height:auto; position:sticky; top:0; z-index:10;
+      padding:14px 16px; border-right:none; border-bottom:1px solid var(--line);
+      background:var(--paper);
+    }
+    nav.side .title{ display:none; }
+    nav.side .brand{ margin-bottom:8px; }
+    nav.side .updated{ display:none; }
+    nav.side .navlinks{
+      display:flex; gap:6px; overflow-x:auto; padding-bottom:4px; -webkit-overflow-scrolling:touch;
+    }
+    nav.side a{
+      white-space:nowrap; padding:7px 12px; background:#EFEAE0; margin-bottom:0; font-size:12.5px;
+    }
+    main{ padding:22px 18px 70px; }
+    .hero h1{ font-size:24px; }
+    table{ font-size:12.5px; }
+    thead th, tbody td{ padding:8px 10px; }
+    .cardgrid{ grid-template-columns:1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="layout">
+
+  <nav class="side" id="sidenav">
+    <div class="brand">패키지 업무 참고자료</div>
+    <div class="title">화장품 포장·표시광고<br>법령 정리</div>
+    <div class="navlinks">
+      <a href="#s0">0. 포장의 구분</a>
+      <a href="#s1">1. 외부 포장 필수 기재사항</a>
+      <a href="#s2">2. 1차 포장 필수 기재사항</a>
+      <a href="#s3">3. 소용량·견본품 간략 표시</a>
+      <a href="#s4">4. 전성분 기재 생략 기준</a>
+      <a href="#s5">5. 표시·광고 금지 유형</a>
+      <a href="#s6">6. 사용 불가 표현 예시</a>
+      <a href="#s7">7. 기능성별 가능·불가 표현</a>
+      <a href="#s8">8. 위반 시 벌칙</a>
+      <a href="#s9">9. 자주 묻는 질문(FAQ)</a>
+      <a href="#s10">10. 문구 자동 검수 도구</a>
+      <a href="#s11">11. 참고 법령·출처</a>
+    </div>
+    <div class="updated">근거 법령 확인일: 2026-09-04<br>(화장품법·시행규칙, 식약처 지침 기준)<br><br>✓ FAQ(9번)는 식약처 「2025 자주하는<br>질문집(화장품)」 원문 PDF 직접 대조 완료</div>
+  </nav>
+
+  <main>
+    <div class="hero">
+      <h1>화장품 포장·표시광고 법령 정리</h1>
+      <p>1차·2차 포장 필수 기재사항, 전성분 기재 생략 기준, 표시·광고 시 사용 금지·가능 표현을 화장품법 및 화장품법 시행규칙, 식품의약품안전처 지침 기준으로 정리했습니다.</p>
+      <div class="disclaimer">
+        <span>⚠️</span>
+        <span><b>실무 참고용 요약입니다.</b> 화장품법은 개정이 잦습니다. 2025.2.7.·2026.4.2. 시행 개정이 이미 반영되어 있으며, <b>2026.11.26. 시행 예정으로 "AI가 생성한 가상의 전문가가 화장품을 보증·추천하는 것처럼 오인시키는 광고" 금지 조항이 신설(법률 제21709호, 2026.5.26. 공포)</b>됩니다. 표시·광고 표현의 적정 여부는 문맥에 따라 달라질 수 있으므로, <b>실제 문안을 확정하거나 심사·보고서를 제출하기 전에는 반드시 담당자 또는 식약처(화장품정책과 043-719-3405 / 종합민원상담센터 1577-1255)의 확인을 한 번 더 거치시길 권해드립니다.</b></span>
+      </div>
+    </div>
+
+    <!-- 0 -->
+    <section id="s0">
+      <h2><span class="num">0.</span> 포장의 구분</h2>
+      <table>
+        <thead><tr><th style="width:120px">구분</th><th>정의</th></tr></thead>
+        <tbody>
+          <tr><td><b>1차 포장</b></td><td>화장품 제조 시 내용물과 직접 접촉하는 포장용기 (예: 튜브, 병, 파우치 자체)</td></tr>
+          <tr><td><b>2차 포장</b></td><td>1차 포장을 수용하는 1개 이상의 포장·보호재 및 표시 목적의 포장 (예: 낱개 상자, 카톤)</td></tr>
+        </tbody>
+      </table>
+      <div class="note">화장품법 <code class="legal">제2조 제6호·제7호</code> 기준</div>
+    </section>
+
+    <!-- 1 -->
+    <section id="s1">
+      <h2><span class="num">1.</span> 외부 포장(2차 포장 또는 1차 포장만 있는 경우) 필수 기재사항</h2>
+      <p class="lead">「1차 포장만으로 구성된 화장품의 외부 포장」과 「1차 포장에 2차 포장을 추가한 화장품의 외부(2차) 포장」에 공통 적용됩니다.</p>
+      <table>
+        <thead><tr><th style="width:34px">No.</th><th style="width:250px">기재 항목</th><th>비고</th></tr></thead>
+        <tbody>
+          <tr><td class="num">1</td><td>화장품의 명칭</td><td>제품명</td></tr>
+          <tr><td class="num">2</td><td>영업자의 상호 및 주소</td><td>책임판매업자 / 맞춤형화장품판매업자</td></tr>
+          <tr><td class="num">3</td><td>전성분(모든 성분)</td><td>생략 가능 기준은 <a href="#s4">4번 항목</a> 참고</td></tr>
+          <tr><td class="num">4</td><td>내용물의 용량 또는 중량</td><td>—</td></tr>
+          <tr><td class="num">5</td><td>제조번호</td><td>—</td></tr>
+          <tr><td class="num">6</td><td>사용기한 또는 개봉 후 사용기간</td><td>개봉 후 사용기간 기재 시 제조연월일 병행 표기 필수</td></tr>
+          <tr><td class="num">7</td><td>가격</td><td>미기재 시에도 벌금 대상 아님(제38조 예외)</td></tr>
+          <tr><td class="num">8</td><td>"기능성화장품" 글자 또는 식약처 지정 도안</td><td>기능성화장품에 한함</td></tr>
+          <tr><td class="num">9</td><td>사용할 때의 주의사항</td><td>화장품법 시행규칙 [별표3] 기준</td></tr>
+          <tr><td class="num">10</td><td>화장품 바코드</td><td>맞춤형화장품은 제외</td></tr>
+          <tr><td class="num">11</td><td>기능성화장품 심사·보고된 효능·효과, 용법·용량</td><td>기능성화장품에 한함</td></tr>
+          <tr><td class="num">12</td><td>성분명을 제품명 일부로 사용한 경우 그 성분명·함량</td><td>방향용 제품 제외</td></tr>
+          <tr><td class="num">13</td><td>인체 세포·조직 배양액 함유 시 그 함량</td><td>—</td></tr>
+          <tr><td class="num">14</td><td>천연·유기농 표시·광고 시 원료 함량</td><td>—</td></tr>
+          <tr><td class="num">15</td><td>수입화장품의 경우 제조국 명칭, 제조회사명·소재지</td><td>맞춤형화장품 제외 / 원산지 표시 시 제조국명 생략 가능</td></tr>
+          <tr><td class="num">16</td><td>"질병의 예방 및 치료를 위한 의약품이 아님" 문구</td><td>탈모완화·여드름피부완화·피부장벽기능회복·튼살완화 기능성화장품 한정</td></tr>
+          <tr><td class="num">17</td><td>영유아·어린이 사용 특정 표시 시 보존제 함량</td><td>3세 이하 영유아 / 4~13세 어린이 대상 제품</td></tr>
+        </tbody>
+      </table>
+      <div class="note">맞춤형화장품은 10.(바코드), 15.(제조국 정보) 제외 · 화장품법 <code class="legal">제10조제1항</code>, 시행규칙 <code class="legal">제19조제4항</code>·[별표4] 기준 (law.go.kr 원문 전체 대조 완료)</div>
+
+      <details class="checklist-wrap">
+        <summary>✅ 체크리스트로 작업하기 <span class="checklist-progress" id="cl1progress">0/17</span></summary>
+        <div class="checklist-body" id="cl1body"></div>
+        <button class="checklist-reset" onclick="resetChecklist('cl1')">이 체크리스트 초기화</button>
+      </details>
+    </section>
+
+    <!-- 2 -->
+    <section id="s2">
+      <h2><span class="num">2.</span> 1차 포장(2차 포장이 별도로 있는 경우) 필수 기재사항</h2>
+      <p class="lead">2차 포장이 있는 제품은, 내용물과 직접 접촉하는 <b>1차 포장 용기 자체</b>에도 아래 4가지를 반드시 별도 기재해야 합니다.</p>
+      <table>
+        <thead><tr><th style="width:34px">No.</th><th>기재 항목</th></tr></thead>
+        <tbody>
+          <tr><td class="num">1</td><td>화장품의 명칭</td></tr>
+          <tr><td class="num">2</td><td>영업자의 상호</td></tr>
+          <tr><td class="num">3</td><td>제조번호</td></tr>
+          <tr><td class="num">4</td><td>사용기한 또는 개봉 후 사용기간 (제조연월일 병행 표기)</td></tr>
+        </tbody>
+      </table>
+      <div class="note warn">예외: 소비자가 1차 포장을 제거하고 사용하는 고형 화장비누는 1차 포장 기재 생략 가능 (화장품법 <code class="legal">제10조제2항</code>)</div>
+      <div class="note">2025.2.7. 시행 개정으로, 명칭·성분·사용기한 등을 1차·2차 포장 중 임의로 선택해 표시하던 방식이 폐지되고, 외부 포장에서 반드시 확인 가능하도록 의무화되었습니다.</div>
+
+      <details class="checklist-wrap">
+        <summary>✅ 체크리스트로 작업하기 <span class="checklist-progress" id="cl2progress">0/4</span></summary>
+        <div class="checklist-body" id="cl2body"></div>
+        <button class="checklist-reset" onclick="resetChecklist('cl2')">이 체크리스트 초기화</button>
+      </details>
+    </section>
+
+    <!-- 3 -->
+    <section id="s3">
+      <h2><span class="num">3.</span> 소용량·견본품 간략 표시 허용 기준</h2>
+      <table>
+        <thead><tr><th style="width:120px">구분</th><th>내용</th><th style="width:260px">비고</th></tr></thead>
+        <tbody>
+          <tr><td>대상</td><td>내용량 10㎖(g) 이하 소용량 화장품</td><td>-</td></tr>
+          <tr><td>대상</td><td>견본품·비매품 등 시험·사용 목적 제품</td><td>"가격" 항목은 "견본품"/"비매품" 표시로 대체</td></tr>
+          <tr><td>허용 범위</td><td>① 화장품 명칭 ② 영업자 상호 ③ 가격(또는 견본품·비매품 표시) ④ 제조번호 ⑤ 사용기한/개봉 후 사용기간</td><td>이 5가지만 기재해도 무방</td></tr>
+          <tr><td>성분 생략 조건</td><td>포장에 전화번호·홈페이지 주소 기재 <b>또는</b> 전성분 인쇄물을 판매업소에 비치</td><td>둘 중 하나 충족 시 전성분 생략 가능</td></tr>
+          <tr><td><span class="tag no">간소화 제외</span></td><td><b>외음부세정제</b>, <b>속눈썹용 퍼머넌트 웨이브</b> — 내용량 50㎖(g) 이하여도 위 간소화 규정 적용 안 됨</td><td>소비자 안전 우려로 전체 기재사항 모두 표시 필요</td></tr>
+        </tbody>
+      </table>
+      <div class="note">화장품법 <code class="legal">제10조제1항 단서</code>, 시행규칙 <code class="legal">제19조제1항</code> 기준 · 간소화 제외 대상은 「2025 자주하는 질문집(화장품)」 Q241 (식약처, 2025.11) 기준</div>
+    </section>
+
+    <!-- 4 -->
+    <section id="s4">
+      <h2><span class="num">4.</span> 전성분 기재 생략 가능 기준</h2>
+      <h3>4-1. 용량과 무관하게 상시 생략 가능한 성분</h3>
+      <table>
+        <thead><tr><th>생략 가능 성분</th><th style="width:200px">비고</th></tr></thead>
+        <tbody>
+          <tr><td>제조 과정 중 제거되어 최종 제품에 남아있지 않은 성분</td><td>상시 생략 가능</td></tr>
+          <tr><td>안정화제·보존제 등 부수 성분으로서 효과 발현량 미만으로 함유된 성분</td><td>상시 생략 가능</td></tr>
+        </tbody>
+      </table>
+
+      <h3>4-2. 내용량 10g(㎖) 초과 ~ 50g(㎖) 이하 제품 — 아래 6종 제외하고 생략 가능</h3>
+      <p class="lead">이 구간의 화장품은 원칙적으로 전성분 기재를 생략할 수 있으나, 아래 성분은 함유 시 반드시 기재해야 합니다.</p>
+      <table>
+        <thead><tr><th>반드시 기재해야 하는 성분 (생략 불가)</th><th style="width:110px">여부</th></tr></thead>
+        <tbody>
+          <tr><td>타르색소</td><td class="center"><span class="tag no">기재필수</span></td></tr>
+          <tr><td>금박</td><td class="center"><span class="tag no">기재필수</span></td></tr>
+          <tr><td>샴푸·린스에 들어있는 인산염의 종류</td><td class="center"><span class="tag no">기재필수</span></td></tr>
+          <tr><td>과일산(AHA)</td><td class="center"><span class="tag no">기재필수</span></td></tr>
+          <tr><td>기능성화장품의 효능·효과 원료</td><td class="center"><span class="tag no">기재필수</span></td></tr>
+          <tr><td>식약처가 사용 한도를 고시한 원료</td><td class="center"><span class="tag no">기재필수</span></td></tr>
+        </tbody>
+      </table>
+      <div class="note warn">위 성분 기재를 생략하려는 경우, 포장에 전화번호·홈페이지 주소 기재 또는 전성분 인쇄물을 판매업소에 비치해야 합니다. (시행규칙 <code class="legal">제19조제5항</code>)</div>
+      <div class="note">10g(㎖) 이하 제품은 <a href="#s3">3번 소용량 간략표시 기준</a>이 적용되어 5개 항목만 기재해도 무방합니다. · 위 6개 성분 목록은 시행규칙 <code class="legal">제19조제2항제3호 가~바목</code> 원문과 대조 완료(law.go.kr 직접 확인)</div>
+    </section>
+
+    <!-- 5 -->
+    <section id="s5">
+      <h2><span class="num">5.</span> 표시·광고 시 금지 행위 유형</h2>
+      <table>
+        <thead><tr><th style="width:34px">No.</th><th style="width:150px">유형</th><th>내용</th></tr></thead>
+        <tbody>
+          <tr><td class="num">1</td><td>의약품 오인</td><td>의약품으로 잘못 인식할 우려가 있는 내용·명칭·효능효과 표시·광고 금지</td></tr>
+          <tr><td class="num">2</td><td>기능성화장품 오인</td><td>기능성화장품이 아님에도 명칭·제조방법·효능효과 등에서 기능성화장품으로 오인될 수 있는 표시·광고 금지 <span style="color:var(--ink-soft);font-size:11.5px;">(2025.8.1. 개정 전에는 "천연화장품·유기농화장품"도 이 항목에 포함되어 있었으나, 정부 인증제도 폐지에 따라 현재는 제외됨 — 7번 섹션 참고)</span></td></tr>
+          <tr><td class="num">3</td><td>전문가 보증 오인</td><td>의사·치과의사·한의사·약사·의료기관·연구기관 등의 지정·공인·추천·연구·개발·사용을 암시하는 표시·광고 금지 (공인된 인체적용시험 결과의 학회 문헌 인용은 출처 명시 시 가능)</td></tr>
+          <tr><td class="num">4</td><td>원산지 오인</td><td>외국제품 ⇄ 국내제품 오인 우려 표시·광고 금지</td></tr>
+          <tr><td class="num">5</td><td>기술제휴 허위표시</td><td>실제 기술제휴 없이 기술제휴를 표현하는 표시·광고 금지</td></tr>
+          <tr><td class="num">6</td><td>배타적 최상급 표현</td><td>비교 광고 시 대상·기준 미명시, "최고"·"최상" 등 배타적 절대 표현 금지</td></tr>
+          <tr><td class="num">7</td><td>허위·과장</td><td>사실과 다르거나 소비자를 오인·기만할 우려가 있는 표시·광고 금지</td></tr>
+          <tr><td class="num">8</td><td>객관적 근거 없는 효능 주장</td><td>실증되지 않은 품질·효능 광고, 화장품 범위를 벗어난 표시·광고 금지</td></tr>
+          <tr><td class="num">9</td><td>저속·혐오 표현</td><td>저속하거나 혐오감을 주는 표현·도안·사진 사용 금지</td></tr>
+          <tr><td class="num">10</td><td>멸종위기종 원료 표방</td><td>국제적 멸종위기종 가공품 함유를 표현·암시하는 표시·광고 금지</td></tr>
+          <tr><td class="num">11</td><td>타사 비방</td><td>사실 여부와 무관하게 타 제품을 비방(의심)하는 표시·광고 금지</td></tr>
+          <tr style="background:#FCF3E3;"><td class="num">12</td><td>AI 가상 전문가 오인 <span class="tag no" style="margin-left:4px;">시행 예정</span></td><td>AI로 생성한 실제와 구분하기 어려운 가상의 음향·이미지·영상으로 의사·약사·대학교수 등 전문가가 화장품을 보증·추천·사용하는 것으로 오인시키는 광고 금지 — <b>2026.11.26. 시행</b>(현재는 미시행)</td></tr>
+        </tbody>
+      </table>
+      <div class="note">1~11번: 화장품법 <code class="legal">제13조제1항·제2항</code>, 시행규칙 <code class="legal">제22조</code> [별표5] 제2호가~카목 — <b>2025.8.1. 개정판(총리령 제2043호) 원문을 law.go.kr에서 직접 대조 완료</b> · 12번: 화장품법 <code class="legal">제13조제1항제4호</code> 신설분(법률 제21709호, 2026.5.26. 공포, 2026.11.26. 시행 예정 — 시행 전까지는 적용되지 않음)</div>
+    </section>
+
+    <!-- 6 -->
+    <section id="s6">
+      <h2><span class="num">6.</span> 사용하면 안 되는 표현·단어 (예시)</h2>
+      <table>
+        <thead><tr><th style="width:130px">구분</th><th>금지 표현 예시</th><th>사유</th></tr></thead>
+        <tbody>
+          <tr><td>질병 치료·예방</td><td>「치료한다」「예방한다」「완치」「항암 효과」「피부암 치료」「무좀 치료」「질염 치료·예방」</td><td>의약품의 효능·효과에 해당</td></tr>
+          <tr><td>아토피·피부질환</td><td>「아토피 피부 치유/치료」「아토피 제거」「아토피에 효과」「노인소양증에 효과」</td><td>질환 자체에 대한 직접 효과 표현은 의약품 오인</td></tr>
+          <tr><td>상처·화상</td><td>「찰과상·화상을 치료·회복시켜준다」</td><td>의약품 효능·효과 영역</td></tr>
+          <tr><td>여드름</td><td>일반화장품에서 「여드름 치료」「여드름 제거」</td><td>기능성화장품(인체세정용) 심사·보고 없이는 「여드름성 피부 완화에 도움」 표현만 가능</td></tr>
+          <tr><td>탈모</td><td>일반화장품에서 「발모·육모·탈모 방지·치료」</td><td>기능성화장품 심사·보고 없이는 사용 불가. 심사 시에도 「탈모 증상 완화에 도움」까지만 가능</td></tr>
+          <tr><td>미백(일반화장품)</td><td>「미백에 도움을 준다」「미백 고시성분(알부틴) 함유」</td><td>미백 기능성화장품으로 심사·보고된 제품에만 사용 가능</td></tr>
+          <tr><td>신체 내부 작용</td><td>「호르몬 분비를 촉진한다」 / 질·내부생식기 점막 등에 작용한다는 표현</td><td>화장품 적용 범위(피부·모발·손발톱·입술·외음부 등)를 벗어난 표현</td></tr>
+          <tr><td>최상급·배타적 표현</td><td>「업계 최고」「국내 유일」「최상의 효과」(객관적 근거·기준 미제시)</td><td>배타적 절대 표현은 비교 기준 명시 없이 사용 불가</td></tr>
+          <tr><td>수치·비교 효과</td><td>「2주 사용 후 피부 수분감 30% 증가」 등 구체적 수치</td><td>인체적용시험·인체외시험 등 객관적 실증자료 필요 (사용 자체가 불가한 것은 아니며 실증 필수)</td></tr>
+          <tr><td>침습적 사용법 암시</td><td>「니들」「바늘」「마이크로니들」「미세침」「MTS」</td><td class="center"><span class="tag no">전면 금지</span></td></tr>
+          <tr><td>인체유래 성분 오인</td><td>「인체줄기세포배양액 유래 엑소좀 함유」「stem cell」 등 줄기세포·엑소좀·리포좀이 인체에서 유래해 들어있는 것으로 오인시키는 표현</td><td class="center"><span class="tag no">실증자료 있어도 금지</span></td></tr>
+          <tr><td>단정적 안전성 표현</td><td>「무자극」(개인차 있음 병기해도 동일)</td><td>자극이 전혀 없다는 단정적 인상으로 소비자 오인 우려</td></tr>
+          <tr><td>보존제 목적 외 효능(살리실산)</td><td>일반화장품에서 「살리실산 함유 → 각질 관리에 도움」</td><td>살리실릭애씨드는 현재 보존제 용도의 사용제한 원료로만 지정, 그 외 효능 표시 원칙적 불가</td></tr>
+          <tr><td>동물실험 관련</td><td>「이 제품은 동물실험을 하지 않았습니다」</td><td>타 제품이 동물실험을 했다는 오인을 유발할 수 있어 부적절</td></tr>
+        </tbody>
+      </table>
+      <div class="note warn">⚠ 이 표의 "니들/무자극/살리실산/동물실험" 4개 항목은 식약처 FAQ 원문(Q311, Q312, Q321, Q322, Q325, Q326)에서 직접 확인된 사례입니다. 반면 "질병치료·아토피·상처화상·여드름·탈모·미백·신체내부작용·최상급표현·수치효과" 항목은 <b>대한화장품협회 해설서 기준의 통용 예시 문구</b>이며, 식약처가 그 문장 자체를 조문으로 금지한 것은 아닙니다. 원칙(의약품 오인 금지 등)은 법에 있지만 구체적 워딩은 예시로 참고하세요.</div>
+      <div class="note">표현은 단어 자체만이 아니라 광고 전체의 문맥·이미지를 종합적으로 고려하여 판단됩니다. (예: '리페어(repair)'는 문맥에 따라 판단)</div>
+    </section>
+
+    <!-- 7 -->
+    <section id="s7">
+      <h2><span class="num">7.</span> 기능성 화장품 유형별 사용 가능·불가 표현</h2>
+      <p class="lead">기능성화장품으로 식약처 심사를 받거나 보고서가 수리된 제품에 한해 해당 효능·효과 표현 사용이 가능합니다. 심사·보고 범위를 벗어난 표현은 사용할 수 없습니다.</p>
+
+      <div class="cardgrid">
+        <div class="fx-card">
+          <h4>미백 기능성화장품</h4>
+          <div class="row"><span class="tag ok">가능</span></div>
+          <p style="font-size:13px;margin:0 0 10px;">기미·주근깨 등의 생성을 억제하여 피부 미백에 도움을 준다 / 멜라닌색소의 침착을 방지하여 피부를 밝게 한다 / 화이트닝에 도움을 준다</p>
+          <div class="row"><span class="tag no">불가</span></div>
+          <p style="font-size:13px;margin:0;">(일반화장품에서) 미백에 도움을 준다는 표현 / 미백 고시성분(알부틴 등) 함유 문구를 심사받지 않은 제품에 사용</p>
+        </div>
+        <div class="fx-card">
+          <h4>주름개선 기능성화장품</h4>
+          <div class="row"><span class="tag ok">가능</span></div>
+          <p style="font-size:13px;margin:0 0 10px;">피부 탄력을 부여하여 주름을 완화한다 / 피부 재생을 도와 주름 개선에 도움을 준다</p>
+          <div class="row"><span class="tag no">불가</span></div>
+          <p style="font-size:13px;margin:0;">(일반화장품에서) 주름개선 효과가 있는 원료가 함유되었다는 표현으로 기능성 효능을 암시</p>
+        </div>
+        <div class="fx-card">
+          <h4>자외선차단 기능성화장품</h4>
+          <div class="row"><span class="tag ok">가능</span></div>
+          <p style="font-size:13px;margin:0 0 10px;">자외선을 차단·산란하여 피부를 보호한다 / SPF·PA 지수 표기(심사 자료 범위 내) / 내수성 심사(보고) 시 「워터프루프」「내수성(water resistance)」</p>
+          <div class="row"><span class="tag no">불가</span></div>
+          <p style="font-size:13px;margin:0;">심사받지 않은 내수성 표현 / 일반화장품에서 자외선차단 효능 원료 함유만으로 차단 효과 암시</p>
+        </div>
+        <div class="fx-card">
+          <h4>보습·진정 표현 (일반화장품 사용 가능 범위)</h4>
+          <div class="row"><span class="tag ok">가능</span></div>
+          <p style="font-size:13px;margin:0 0 10px;">피부에 충분한 수분을 공급하여 수분 부족 현상을 완화한다 / 수분을 보충해준다 / 두피의 피지에 의한 지성 두피 청결에 도움을 준다</p>
+          <div class="row"><span class="tag no">불가</span></div>
+          <p style="font-size:13px;margin:0;">아토피·소양증 등 질환명을 사용하여 효과를 표방하는 표현</p>
+        </div>
+        <div class="fx-card">
+          <h4>천연·유기농화장품 <span style="font-weight:400;color:var(--ink-soft);font-size:12px;">(2025.8.1. 정부 인증제도 폐지 → 민간 자율 기준)</span></h4>
+          <div class="row"><span class="tag ok">가능</span></div>
+          <p style="font-size:13px;margin:0 0 10px;">대한화장품협회 「천연화장품 및 유기농화장품 표시·광고 안내서」 기준(ISO 16128 계산법)을 충족하고 실증자료를 갖춘 경우 — <b>천연화장품: 천연유래 원료 95% 이상</b> / <b>유기농화장품: 유기농유래 원료 10% 이상 + 천연유래 원료 합계 95% 이상</b></p>
+          <div class="row"><span class="tag no">불가</span></div>
+          <p style="font-size:13px;margin:0;">위 기준 미충족 또는 실증자료 없이 "천연화장품"·"유기농화장품" 표시·광고 (민간 인증마크 유무와 무관하게 기준 충족·실증 필요) — 위반 시 업무정지 2개월 또는 1년 이하 징역·1천만원 이하 벌금</p>
+        </div>
+      </div>
+      <div class="note warn">⚠ 미백·주름개선·자외선차단·보습 카드의 "사용 가능/불가 표현 예시" 문장들은 <b>협회 해설서 기준의 통용 예시</b>이며 법조문 원문 그대로는 아닙니다. 다만 천연·유기농 카드의 수치 기준(95%, 10%)과 인증제도 폐지 시점(2025.8.1.)은 식약처 FAQ 원문(Q309, Q324, Q327~328)으로 직접 확인했습니다.</div>
+    </section>
+
+    <!-- 8 -->
+    <section id="s8">
+      <h2><span class="num">8.</span> 위반 시 벌칙 요약</h2>
+      <table>
+        <thead><tr><th>위반 유형</th><th style="width:220px">벌칙</th><th style="width:220px">비고</th></tr></thead>
+        <tbody>
+          <tr><td>기재·표시사항 위반 (제10조제1항·제2항)</td><td>200만원 이하 벌금</td><td>"가격"(제10조제1항제7호) 위반은 벌금 대상에서 명시적으로 제외</td></tr>
+          <tr><td>표시·광고 준수사항 위반 (제9조·제13조·제16조제1항제2호·3호 등)</td><td>1년 이하 징역 또는 1천만원 이하 벌금 (제37조)</td><td>징역·벌금 병과 가능</td></tr>
+          <tr><td>실증자료 미제출 시 중지명령 위반 (제14조제4항)</td><td>1년 이하 징역 또는 1천만원 이하 벌금 (제37조)</td><td>징역·벌금 병과 가능</td></tr>
+          <tr><td>양벌규정 (제39조)</td><td>행위자 처벌 + 법인·개인 동일 벌금형 병과</td><td>단, 상당한 주의·감독을 다한 경우 면책</td></tr>
+        </tbody>
+      </table>
+      <div class="note">화장품법 <code class="legal">제36~39조</code> (2026.9월 현재 시행 조문) 기준 · 위반 유형에 따라 3년 이하 징역/1천만원 이하 벌금(제36조)에 해당하는 중대 위반도 별도로 있음</div>
+    </section>
+
+    <!-- 9 : FAQ -->
+    <section id="s9">
+      <h2><span class="num">9.</span> 자주 묻는 질문 (FAQ)</h2>
+      <p class="lead">식품의약품안전처가 2025년 11월 발간한 「2025 자주하는 질문집(화장품)」(민원인 안내서) 원문을 직접 확인하여 정리했습니다. 각 항목 끝의 Q번호는 원문 그대로이며, 원문은 mfds.go.kr → 법령/자료 → 법령정보 → 공무원지침서/민원인안내서 에서 내려받을 수 있습니다.</p>
+
+      <div class="faq-cat">포장 구분·세트 포장</div>
+      <details class="faq">
+        <summary><span class="qmark">Q</span>1차 포장, 2차 포장, 큰 박스(3차 포장)로 구성하면 3차 포장에도 기재사항이 필요한가요?</summary>
+        <div class="a">"개별 상자(2차 포장)"와 "큰 상자(3차 포장)"는 <b>모두 2차 포장에 해당</b>할 수 있습니다. 화장품법 제10조제1항에 따라 소비자가 구매 시 확인하는 <b>"외부 포장"에 해당하는 포장에 기재사항을 표시</b>해야 합니다.
+        <span class="src">2025 자주하는 질문집(화장품) Q239 · 화장품법 제2조, 제10조제1항</span></div>
+      </details>
+      <details class="faq">
+        <summary><span class="qmark">Q</span>"두 개 이상의 화장품을 하나의 세트로 포장"이란 정확히 어떤 의미인가요?</summary>
+        <div class="a">세트를 구성하는 <b>개별 제품 각각이 화장품법상 화장품 정의에 부합하고, 그 자체로 판매 단위가 될 수 있어야</b> 세트 포장으로 인정됩니다. 예를 들어 <b>염모제 1제와 2제처럼 반드시 함께 써야 효능이 성립하는 조합은 세트 포장이 아닙니다.</b>
+        <span class="src">2025 자주하는 질문집(화장품) Q244 · 화장품법 제2조</span></div>
+      </details>
+      <details class="faq">
+        <summary><span class="qmark">Q</span>세트 포장 외부에 구성품 사용기한을 각각 다 적어야 하나요, 하나만 적어도 되나요?</summary>
+        <div class="a">세트 포장 외부에는 <b>사용기한이 가장 빨리 도래하는 제품의 사용기한 하나만</b> 기재할 수 있고(그 밖의 제품은 "사용기한: 제품에 별도 표시" 등으로 위치 안내 가능), <b>개봉 후 사용기간</b>을 적는 경우에는 제조일자가 가장 오래된 제품의 개봉 후 사용기간(제조연월일 병기)만 기재할 수 있습니다. 각각 모두 기재하는 것도 가능합니다.
+        <span class="src">2025 자주하는 질문집(화장품) Q236, Q237, Q256 · 시행규칙 [별표4] 제5호·제6호</span></div>
+      </details>
+      <details class="faq">
+        <summary><span class="qmark">Q</span>세트 포장에 "통합된 제조번호"를 쓴 경우, 그중 한 제품에 문제가 생기면 어떻게 되나요?</summary>
+        <div class="a">개별 제품마다 제조번호를 각각 기재했다면 <b>해당 제조번호가 붙은 세트만</b> 회수하면 되지만, 구성품 제조번호를 대체하는 <b>"통합된 제조번호"를 썼다면 그 통합 제조번호가 붙은 세트 전체를 회수</b>해야 합니다.
+        <span class="src">2025 자주하는 질문집(화장품) Q238 · 시행규칙 [별표4] 제5호나목</span></div>
+      </details>
+      <details class="faq">
+        <summary><span class="qmark">Q</span>세트 포장 1차 용기에 바코드가 있으면 2차(외부) 포장의 바코드는 생략해도 되나요?</summary>
+        <div class="a">안 됩니다. 「화장품 바코드 표시 및 관리요령」(식약처 고시)에 따라 <b>포장 단위별로 개개의 용기 또는 포장 각각에</b> 바코드 심벌을 표시해야 합니다.
+        <span class="src">2025 자주하는 질문집(화장품) Q257 · 「화장품 바코드 표시 및 관리요령」(식약처고시) 제6조</span></div>
+      </details>
+
+      <div class="faq-cat">소용량·간소화 표시</div>
+      <details class="faq">
+        <summary><span class="qmark">Q</span>50㎖ 이하면 무조건 표시를 간소화할 수 있나요?</summary>
+        <div class="a">아닙니다. 내용량과 무관하게 <b>"외음부세정제"와 "속눈썹용 퍼머넌트 웨이브"(50mL 이하 포함)는 간소화 표시 대상에서 제외</b>되어 일반 제품과 동일하게 전체 기재사항을 표시해야 합니다. 소비자 안전이 우려된다는 이유로 2024년 정책설명회에서 별도 안내된 사항입니다.
+        <span class="src">2025 자주하는 질문집(화장품) Q241 · 화장품법 제10조, 시행규칙 제19조</span></div>
+      </details>
+      <details class="faq">
+        <summary><span class="qmark">Q</span>내용량이 적은 제품이나 견본(샘플)품은 어떤 항목만 적으면 되나요?</summary>
+        <div class="a">1차 포장만 있거나 1차+2차 포장인 제품의 외부 포장에는 <b>① 화장품 명칭 ② 책임판매업자/맞춤형판매업자 상호 ③ 가격 ④ 제조번호 ⑤ 사용기한 또는 개봉 후 사용기간(개봉 후 사용기간 기재 시 제조연월일 병기)</b>만 적어도 됩니다. 2차 포장이 있는 경우 1차 포장에는 별도로 ①명칭 ②상호 ③제조번호 ④사용기한/개봉 후 사용기간을 적어야 합니다.
+        <span class="src">2025 자주하는 질문집(화장품) Q242 · 화장품법 제10조제1항 단서·제2항</span></div>
+      </details>
+      <details class="faq">
+        <summary><span class="qmark">Q</span>고형 샴푸바·화장비누는 내용량을 어떻게 표기하나요?</summary>
+        <div class="a">화장비누(고체 형태 세안용 비누)는 <b>수분을 포함한 중량과 건조중량을 함께 기재</b>해야 합니다. 그 외 일반 제품은 1차·2차 포장 무게가 포함되지 않은 용량(중량)만 기재하며, 3개 제품 평균 내용량이 표기량의 97% 이상이어야 합니다.
+        <span class="src">2025 자주하는 질문집(화장품) Q243 · 「화장품 안전기준 등에 관한 규정」 제6조제5항</span></div>
+      </details>
+
+      <div class="faq-cat">제품명·전성분 표시</div>
+      <details class="faq">
+        <summary><span class="qmark">Q</span>제품명에 "시카 로션"처럼 성분을 연상시키는 이름을 쓰면(정식 성분명이 아니어도) 함량을 적어야 하나요?</summary>
+        <div class="a">네. 정식 성분명이 아니더라도 <b>소비자가 특정 성분이 들어있다고 인지할 수 있는 표현이면, 그와 관련된 모든 성분과 함량을 기재</b>해야 합니다. ("시카"라는 이름을 썼다면 시카 관련 성분 전부의 함량 표시 필요)
+        <span class="src">2025 자주하는 질문집(화장품) Q287 · 시행규칙 제19조제4항제3호</span></div>
+      </details>
+      <details class="faq">
+        <summary><span class="qmark">Q</span>제품명에 쓴 성분이 0.02%처럼 아주 소량만 들어있어도 함량을 적어야 하나요?</summary>
+        <div class="a">네. <b>제품명에 성분명을 쓰기 위한 최소 함량 기준은 따로 없으므로</b>, 소량이라도 그 성분명과 함량을 표시해야 합니다.
+        <span class="src">2025 자주하는 질문집(화장품) Q288 · 시행규칙 제19조제4항제3호</span></div>
+      </details>
+      <details class="faq">
+        <summary><span class="qmark">Q</span>수출용/국내용을 나눠 만들 때 국문 제품명과 영문 제품명이 달라도 되나요?</summary>
+        <div class="a">국문 제품명은 <b>영문 제품명의 의미를 그대로 살려서 사용하는 것이 적절</b>합니다. 다만 국내에서 팔지 않고 수출만 하는 제품은 화장품법 제30조에 따라 기재사항(제10조 등) 규정 적용을 받지 않고 수입국 규정을 따를 수 있습니다.
+        <span class="src">2025 자주하는 질문집(화장품) Q289 · 화장품법 제12조, 제30조</span></div>
+      </details>
+
+      <div class="faq-cat">표시·광고 실증</div>
+      <details class="faq">
+        <summary><span class="qmark">Q</span>"니들", "피부 속까지 들어간다" 같은 표현은 무조건 과장 광고인가요?</summary>
+        <div class="a">단어 하나만으로 위반 여부를 판단하지는 않지만, <b>"바늘·니들·마이크로니들·미세침·MTS"는 2025.1.21.자로 「화장품 표시·광고 관리 지침」에 금지표현으로 신규 추가</b>되었습니다. 화장품 범위를 벗어난 사용방법을 암시해 소비자가 오인할 우려가 있기 때문입니다.
+        <span class="src">2025 자주하는 질문집(화장품) Q311, Q322 · 「화장품 표시·광고 관리 지침」[별표1] (2025.1.21. 개정)</span></div>
+      </details>
+      <details class="faq">
+        <summary><span class="qmark">Q</span>"이 제품은 동물실험을 하지 않았습니다"라는 문구를 광고에 써도 되나요?</summary>
+        <div class="a">권장하지 않습니다. 화장품에 동물실험을 실시하는 것 자체가 원칙적으로 금지되어 있는데, 이 문구를 광고에 쓰면 오히려 <b>"우리 제품 외 타사 제품은 동물실험을 했을 것"이라는 오인을 유발</b>할 우려가 있어 부적절한 표시·광고로 봅니다.
+        <span class="src">2025 자주하는 질문집(화장품) Q312 · 화장품법 제15조의2, 시행규칙 [별표5]</span></div>
+      </details>
+      <details class="faq">
+        <summary><span class="qmark">Q</span>일반화장품(기능성 심사를 받지 않은 제품)에 살리실산이 들어있으면 "각질 관리에 도움"이라고 광고할 수 있나요?</summary>
+        <div class="a">원칙적으로 불가합니다. 살리실릭애씨드는 현재 <b>"보존제" 용도의 사용상 제한 원료</b>로 지정되어 있어, 보존 목적 외의 효능(각질 관리 등)을 표시·광고하면 소비자가 오인할 우려가 있어 부적절합니다.
+        <span class="src">2025 자주하는 질문집(화장품) Q321 · 「화장품 안전기준 등에 관한 규정」[별표2]</span></div>
+      </details>
+      <details class="faq">
+        <summary><span class="qmark">Q</span>"인체줄기세포배양액 유래 엑소좀 함유"처럼 표현해도 되나요?</summary>
+        <div class="a">안 됩니다. 인체 세포·조직에서 추출·분리·정제한 성분(엑소좀 등)은 <b>화장품 원료로 사용할 수 없으며</b>, 인체에서 유래한 특정 성분(엑소좀, 리포좀 등)이 들어있는 것으로 오인시키는 표현과 줄기세포 관련 표현은 <b>실증자료가 있어도 금지표현</b>입니다. (식물 등 인체 외 유래 성분 표현은 사용 가능)
+        <span class="src">2025 자주하는 질문집(화장품) Q314, Q320, Q325 · 「화장품 표시·광고 관리 지침」[별표1]</span></div>
+      </details>
+      <details class="faq">
+        <summary><span class="qmark">Q</span>피부 자극 테스트에서 '무자극' 판정을 받았으면 "무자극"이라고 광고해도 되나요?</summary>
+        <div class="a">실증자료가 있어도 <b>"무자극"이라는 단정적 표현은 피부에 어떠한 자극도 없다는 의미로 소비자가 오인할 우려가 있어 화장품법에 저촉될 수 있습니다.</b> "개인차 있음" 표기를 병기해도 마찬가지입니다.
+        <span class="src">2025 자주하는 질문집(화장품) Q326 · 시행규칙 [별표5] 제2호사목</span></div>
+      </details>
+      <details class="faq">
+        <summary><span class="qmark">Q</span>정부의 천연·유기농 화장품 인증 제도가 없어졌다는데, 이제 아무나 "천연화장품"이라고 광고해도 되나요?</summary>
+        <div class="a">아닙니다. <b>정부 인증 제도는 2025.8.1.자로 폐지</b>되었지만, 대신 대한화장품협회의 「천연화장품 및 유기농화장품 표시·광고 안내서」기준(ISO 16128 계산법: 천연화장품은 천연유래 원료 <b>95% 이상</b>, 유기농화장품은 유기농유래 원료 <b>10% 이상</b> + 천연유래 원료 합계 <b>95% 이상</b>)을 충족하고 이를 <b>실증자료로 입증해야만</b> "천연/유기농화장품"으로 표시·광고할 수 있습니다. 위반 시 판매·광고업무정지 2개월 또는 1년 이하 징역·1천만원 이하 벌금 대상입니다.
+        <span class="src">2025 자주하는 질문집(화장품) Q309, Q324, Q327, Q328 · 화장품법 제13조(제1항 관련), 제37조 (2025.8.1. 시행 개정으로 정부 인증제도 근거 삭제)</span></div>
+      </details>
+      <details class="faq">
+        <summary><span class="qmark">Q</span>원료 추출물의 함량을 "00% 함유"라고 광고할 때 어떤 기준으로 계산해야 하나요?</summary>
+        <div class="a"><b>완제품 기준으로, 희석용매 등을 제외한 순수 추출물질의 함량</b>을 정확히 기재해야 합니다. 희석 전 원료 단계의 농도를 그대로 광고에 쓰면 소비자 오인의 소지가 있습니다.
+        <span class="src">2025 자주하는 질문집(화장품) Q329 · 「화장품 표시·광고 관리 지침」(민원인안내서)</span></div>
+      </details>
+
+      <div class="note" style="margin-top:14px;">위 FAQ는 식품의약품안전처 「2025 자주하는 질문집(화장품)」(2025.11 발간) 원문을 직접 확인하여 요약한 것입니다. 다만 이 안내서 자체도 "법적 효력을 가지는 것이 아니므로 참고용으로만 활용하라"고 명시하고 있어, 개별 사례는 세부 조건에 따라 결론이 달라질 수 있습니다. 애매한 사례는 식약처 종합민원상담센터(1577-1255)에 직접 확인하는 것이 가장 정확합니다.</div>
+    </section>
+
+    <!-- 10 : 문구 검수 도구 -->
+    <section id="s10">
+      <h2><span class="num">10.</span> 문구 자동 검수 도구</h2>
+      <p class="lead">지금까지 정리한 법령·FAQ 기준 키워드 사전을 바탕으로, 입력한 문구를 <b>사용 불가(빨강)</b> · <b>주의·조건부(노랑)</b> · <b>사용 가능(초록)</b>으로 자동 표시합니다. 단어에 마우스를 올리면(모바일은 탭) 근거가 나옵니다.</p>
+      <div class="disclaimer" style="margin-bottom:16px;">
+        <span>⚠️</span>
+        <span><b>참고용 1차 스크리닝 도구입니다.</b> 키워드 매칭 방식이라 문맥을 완전히 이해하지 못하며, 특히 "노랑(주의)"으로 표시된 항목은 기능성화장품 심사·보고 여부, 실증자료 보유 여부에 따라 결론이 달라집니다. <b>이 도구의 결과만으로 문안을 확정하지 마시고, 실제 문안 확정이나 심사 제출 전에는 꼭 한 번 더 담당자나 식약처 확인을 거치시길 권해드립니다.</b></span>
+      </div>
+      <div class="checker-box">
+        <textarea id="chkInput" placeholder="예: PDRN + 나이아신아마이드 20000 미백 · 탄력 · 매끈한 피부결 유지">PDRN + 나이아신아마이드 20000 미백 · 탄력 · 매끈한 피부결 유지</textarea>
+        <br>
+        <button class="checker-btn" onclick="runChecker()">문구 검수하기</button>
+        <button class="copy-btn" id="copyBtn" onclick="copyResult()">📋 결과 복사하기</button>
+        <div class="checker-legend">
+          <span><i style="background:var(--no-fg);"></i>사용 불가 (원칙적 금지)</span>
+          <span><i style="background:var(--warn-fg);"></i>주의·조건부 (실증/심사 확인 필요)</span>
+          <span><i style="background:var(--ok-fg);"></i>사용 가능 (일반적 허용 표현)</span>
+        </div>
+        <div class="checker-result" id="chkResult"><span class="checker-empty">위 문구를 넣고 "문구 검수하기"를 눌러보세요.</span></div>
+        <div class="checker-detail" id="chkDetail"></div>
+      </div>
+    </section>
+
+    <!-- 11 -->
+
+    <section id="s11">
+      <h2><span class="num">11.</span> 참고 법령·출처</h2>
+      <ul class="source-list">
+        <li>화장품법 [시행 2026.4.2.] [법률 제20901호, 2025.4.1., 일부개정] — 제2, 10, 13, 14, 30, 36~39조 <b>law.go.kr 원문 전문 직접 대조 완료</b> (현재 시행 중인 최신본 확인)</li>
+        <li>화장품법 일부개정법률 제20767호(2025.1.31. 공포, 2025.8.1. 시행) — 천연화장품·유기농화장품 정부 인증제도 폐지 근거 법률</li>
+        <li>화장품법 시행규칙 [시행 2026.4.2.] [총리령 제2109호, 2026.3.31., 일부개정] 제19조, 제22조, 제23조 및 <b>[별표3] 화장품 유형과 사용 시의 주의사항(제19조제3항 관련) · [별표4] 화장품 포장의 표시기준 및 표시방법(제19조제7항 관련) · [별표5] 화장품 표시·광고의 범위 및 준수사항(제22조 관련)</b> — 세 별표 모두 law.go.kr에서 <b>전문 원문 파일을 직접 내려받아 전체 대조 완료</b>. 별표5는 <b>2025.8.1.(총리령 제2043호) 개정판 기준</b>(제2호나목에서 "천연화장품·유기농화장품" 문구 삭제됨을 확인)</li>
+        <li>식품의약품안전처 「화장품 표시·광고 관리 지침」, 식품의약품안전처고시 「화장품 표시·광고 실증에 관한 규정」 — 지침 자체 전문은 미대조, FAQ·해설서를 통해 간접 확인</li>
+        <li>대한화장품협회(KCIA) 「화장품 광고자문 기준 및 해설서」, 「천연화장품 및 유기농화장품 표시·광고 안내서」</li>
+        <li><b>식품의약품안전처 「2025 자주하는 질문집(화장품)」(민원인 안내서, 2025.11.28. 승인·발간)</b> — 이용자가 제공한 원문 PDF를 직접 확인하여 9번 FAQ 및 본문 일부(3, 6, 7번) 수정에 반영</li>
+        <li>찾기쉬운 생활법령정보 (easylaw.go.kr) — 2026.8.15. 기준 콘텐츠</li>
+      </ul>
+      <div class="note warn">화장품법 제13조제1항에 <b>제4호가 신설(법률 제21709호, 2026.5.26. 공포 → 2026.11.26. 시행 예정)</b>되어, 기존 제4호(전문가 보증 오인 등)는 제5호로 이동합니다. 신설 제4호는 AI(인공지능시스템)로 생성한 실제와 구분하기 어려운 가상의 음향·이미지·영상을 이용해 의사·치과의사·한의사·수의사·약사·한약사·대학교수 등 전문가가 화장품을 보증·지정·공인·추천·지도·사용하는 것으로 오인시키는 광고를 금지하는 내용입니다.</div>
+      <div class="note">그 밖에 확인된 예정 개정(패키징·표시광고와는 무관, 참고용): <b>법률 제21302호</b>(2025.12.30. 공포, 2026.12.30. 시행 예정 — 회수대상 위해성 등급 신설, 과징금 상한액 조정 등) · <b>법률 제21525호</b>(2026.4.7. 공포, 2026.10.7. 시행 예정 — 파산선고 결격조항을 "피성년후견인"으로 정비) · <b>법률 제21604호</b>(2026.4.28. 공포, 2027.4.29. 시행 예정 — 제3조의2 관련). 화장품법은 개정이 매우 잦으므로, 실무 적용 전 국가법령정보센터(law.go.kr)에서 최신 조문을 다시 확인하시기 바랍니다.</div>
+    </section>
+
+    <footer class="page">화장품 포장·표시광고 법령 정리 · 이 문서는 실무 참고용이며 법적 효력이 있는 유권해석이 아닙니다.</footer>
+  </main>
+</div>
+
+<script>
+  const links = document.querySelectorAll('nav.side a');
+  const sections = Array.from(links).map(l => document.querySelector(l.getAttribute('href')));
+  function onScroll(){
+    let idx = 0;
+    const y = window.scrollY + 120;
+    sections.forEach((s,i)=>{ if(s && s.offsetTop <= y) idx = i; });
+    links.forEach(l=>l.classList.remove('active'));
+    if(links[idx]) links[idx].classList.add('active');
+  }
+  window.addEventListener('scroll', onScroll);
+  onScroll();
+</script>
+<script>
+  // 문구 자동 검수 도구 — 참고용 키워드 사전 (법령·FAQ 대조 기준)
+  const DICT = [
+    // 빨강: 사용 불가
+    {re:'여드름\\s*(?:치료|제거)', cls:'r', tip:'여드름 치료·제거 표현은 기능성화장품(인체세정용) 심사·보고 없이 사용 불가'},
+    {re:'탈모\\s*(?:치료|방지)|발모|육모', cls:'r', tip:'탈모 치료·방지, 발모·육모 표현은 기능성화장품 심사·보고 없이 사용 불가'},
+    {re:'니들|마이크로\\s*니들|미세침|바늘|MTS', cls:'r', tip:'침습적 시술을 연상시키는 표현 — 2025.1.21. 신규 금지표현 추가 (식약처 FAQ Q311, Q322)'},
+    {re:'무자극', cls:'r', tip:'자극이 전혀 없다는 단정적 표현은 실증자료가 있어도 금지 (FAQ Q326)'},
+    {re:'줄기세포|스템셀|stem\\s*cell', cls:'r', tip:'줄기세포 관련 표현은 실증자료 유무와 무관하게 금지 (FAQ Q314, Q325)'},
+    {re:'엑소좀|리포좀', cls:'r', tip:'인체에서 유래한 성분으로 오인시키는 표현은 금지 (FAQ Q314, Q320, Q325)'},
+    {re:'(?:시술|치료)\\s*후', cls:'y', tip:'시술·치료 "이후"의 사용을 뜻하는 문맥으로 보입니다. 직접적인 치료 주장보다는 완화되지만, 여전히 의료행위를 연상시킬 수 있어 전체 문맥을 다시 확인하세요'},
+    {re:'완치|치료(?!제)', cls:'r', tip:'질병 치료·예방 표현은 의약품으로 오인될 수 있어 금지 (시행규칙 별표5 가목)'},
+    {re:'국내\\s*유일|업계\\s*최고|세계\\s*최초', cls:'r', tip:'객관적 근거 제시 없는 배타적·절대적 표현은 금지 (별표5 바목)'},
+    {re:'최고|최상', cls:'r', tip:'배타적 절대 표현은 비교 대상·기준 제시 없이 사용 불가 (별표5 바목)'},
+    // 노랑: 주의·조건부
+    {re:'미백', cls:'y', tip:'미백 기능성화장품으로 심사·보고된 제품에만 사용 가능한 표현입니다. 심사·보고 여부를 꼭 확인하세요 (별표5 나목)'},
+    {re:'주름\\s*개선', cls:'y', tip:'주름개선 기능성화장품 심사·보고가 필요한 표현입니다'},
+    {re:'자외선\\s*차단|UV\\s*차단|SPF|PA\\+{1,4}', cls:'y', tip:'자외선차단 기능성화장품 심사·보고가 필요한 표현입니다'},
+    {re:'탄력', cls:'y', tip:'단독 사용은 대체로 가능하나 "주름개선"과 결합되면 기능성 심사 대상으로 해석될 수 있어 주의가 필요합니다'},
+    {re:'천연|유기농', cls:'y', tip:'2025.8.1. 정부 인증제도 폐지 후에는 협회 기준(ISO16128: 천연 95%↑/유기농 10%↑) 충족 및 실증자료가 있어야 사용 가능 (FAQ Q309, Q324, Q327~328)'},
+    {re:'저자극|순한', cls:'y', tip:'정도 표현은 상대적으로 허용되나 "무자극"처럼 단정적 표현으로 흐르지 않도록 주의가 필요합니다'},
+    {re:'모공', cls:'y', tip:'모공 수축 등은 조심스럽게 가능하나, 모공의 구조적 변화(축소·제거)를 주장하면 부적절할 수 있습니다'},
+    {re:'PDRN', cls:'y', tip:'피부 시술(스킨부스터)에 흔히 쓰이는 성분명입니다. 시술 효과를 연상시키는 문구와 결합되지 않도록 주의하세요'},
+    {re:'리페어|repair', cls:'y', tip:'문맥에 따라 판단되는 표현입니다 (재생·복구 뉘앙스가 의약품적 효능 암시로 해석될 수 있음)'},
+    {re:'\\d{3,}', cls:'y', tip:'구체적 수치를 표시할 경우 인체적용시험 등 객관적 실증자료가 필요합니다 (별표5 아목)'},
+    {re:'여드름', cls:'y', tip:'여드름 관련 표현은 기능성화장품(인체세정용) 심사·보고 여부에 따라 사용 가능 여부가 갈립니다. 일반화장품이라면 "여드름성 피부 관리에 도움" 수준의 표현만 가능합니다'},
+    {re:'탈모', cls:'y', tip:'탈모 관련 표현은 기능성화장품 심사·보고 여부에 따라 사용 가능 여부가 갈립니다. 심사받은 경우에도 "탈모 증상 완화에 도움" 수준까지만 가능합니다'},
+    // 초록: 일반적으로 사용 가능
+    {re:'나이아신아마이드|알부틴|아스코빌글루코사이드|알파-비사보롤|닥나무추출물', cls:'g', tip:'식약처 고시 성분의 정식 명칭으로, 성분명 자체는 표기 가능합니다 (다만 이로 인한 효능 주장은 기능성 심사 여부에 따라 별도 판단 필요)'},
+    {re:'보습|수분|피부결|매끈|촉촉|유지', cls:'g', tip:'일반적으로 사용 가능한 화장품 표현입니다'},
+  ];
+
+  // 맞춤법·표현 확인용 사전 (화장품 카피에서 자주 나오는 오류 위주)
+  const SPELL_DICT = [
+    {re:'몇일', suggestion:'며칠', note:'"몇일"은 잘못된 표기이며 "며칠"이 맞습니다'},
+    {re:'어떻해(?!요)', suggestion:'어떡해', note:'"어떻해"는 잘못된 표기이며 "어떡해"가 맞습니다'},
+    {re:'역활', suggestion:'역할', note:'"역활"은 잘못된 표기이며 "역할"이 맞습니다'},
+    {re:'촉촉히', suggestion:'촉촉이', note:'부사형은 "촉촉히"가 아니라 "촉촉이"가 맞습니다'},
+    {re:'깨끗히', suggestion:'깨끗이', note:'부사형은 "깨끗히"가 아니라 "깨끗이"가 맞습니다'},
+    {re:'희안한|희안하게', suggestion:'희한한/희한하게', note:'"희안"이 아니라 "희한(稀罕)"이 맞습니다'},
+    {re:'어의없', suggestion:'어이없', note:'"어의없다"가 아니라 "어이없다"가 맞습니다'},
+    {re:'가르켜|가르킴|가르키는|가르킨다', suggestion:'가리켜/가리킴/가리키는/가리킨다', note:'"가르치다"(교육)와 "가리키다"(지시)를 혼동한 표현일 수 있습니다'},
+    {re:'함으로서', suggestion:'함으로써', note:'수단·방법을 나타낼 때는 "~로서"가 아니라 "~로써"가 맞습니다 (자격·지위를 뜻할 때만 "로서")'},
+    {re:'안되요', suggestion:'안 돼요', note:'"안되요"가 아니라 "안 돼요"(안 되어요의 줄임)가 맞습니다'},
+    {re:'(?<!안\\s?)되요(?!다)', suggestion:'돼요', note:'"되요"가 아니라 "돼요"(되어요의 줄임)가 맞습니다'},
+    {re:'곰곰히', suggestion:'곰곰이', note:'부사형은 "곰곰히"가 아니라 "곰곰이"가 맞습니다'},
+    {re:'삼가하세요|삼가해\\s*주세요|삼가함|삼가하시기', suggestion:'삼가세요/삼가 주세요/삼가시기', note:'기본형이 "삼가다"이므로 "삼가하다"가 아니라 "삼가다"로 활용해야 합니다 (사용상 주의사항 문구에 특히 자주 등장하는 오류)'},
+    {re:'하십시요|주십시요', suggestion:'하십시오/주십시오', note:'"~시요"가 아니라 "~시오"가 맞습니다 (사용상 주의사항 문구에 특히 자주 등장하는 오류)'},
+    {re:'웬지', suggestion:'왠지', note:'"웬지"는 잘못된 표기이며 "왠지"가 맞습니다'},
+    {re:'왠만', suggestion:'웬만', note:'"왠만하면"이 아니라 "웬만하면"이 맞습니다'},
+    {re:'낳으세요|낳길\\s*바라', suggestion:'나으세요/낫길 바라요', note:'"낫다"(병이 호전되다)와 "낳다"(출산하다)를 혼동한 표현일 수 있습니다'},
+    {re:'하는\\s*데로|원하는\\s*데로|생각하는\\s*데로', suggestion:'~하는 대로', note:'방법·모양을 나타낼 때는 "데로"가 아니라 "대로"가 맞습니다'},
+    {re:'하던지|말던지|가던지|오던지', suggestion:'~하든지/말든지/가든지/오든지', note:'선택을 나타낼 때는 "~던지"가 아니라 "~든지"가 맞습니다 (과거 회상은 "~던")'},
+    {re:'알맞는', suggestion:'알맞은', note:'"알맞다"는 형용사이므로 "알맞는"이 아니라 "알맞은"이 맞습니다'},
+    {re:'걸맞는', suggestion:'걸맞은', note:'"걸맞다"는 형용사이므로 "걸맞는"이 아니라 "걸맞은"이 맞습니다'},
+    {re:'금새', suggestion:'금세', note:'"매우 짧은 시간에"라는 뜻이면 "금새"가 아니라 "금세"가 맞습니다'},
+    {re:'오랫만', suggestion:'오랜만', note:'"오랫만"은 잘못된 표기이며 "오랜만"이 맞습니다'},
+    {re:'설레임', suggestion:'설렘', note:'"설레다"의 명사형 표준어는 "설레임"이 아니라 "설렘"입니다'},
+    {re:'않되(?:요|다|고|어)', suggestion:'안 되(요/다/고/어)', note:'"않다"(~지 않다)와 부사 "안"을 혼동한 표현입니다 ("안 되다"가 맞음)'},
+    {re:'뿐만아니라', suggestion:'뿐만 아니라', note:'"뿐"은 의존 명사이므로 앞말과 띄어 써야 합니다'},
+    {re:'그리고나서', suggestion:'그러고 나서', note:'"그리고"는 접속부사라 "-고 나서"와 결합할 수 없어 "그러고 나서"로 써야 합니다'},
+    {re:'예기(?:하다|해요|하고|했|할)', suggestion:'얘기(하다/해요/하고 등)', note:'"이야기"의 준말은 "예기"가 아니라 "얘기"입니다'},
+    {re:'됬(?:다|어|음)', suggestion:'됐(다/어/음)', note:'"됬다"가 아니라 "됐다"(되었다의 준말)가 맞습니다'},
+    {re:'일일히', suggestion:'일일이', note:'부사형은 "일일히"가 아니라 "일일이"가 맞습니다'},
+    {re:'카드\\s*결재|현금\\s*결재|계좌\\s*결재', suggestion:'카드결제/현금결제/계좌결제', note:'대금을 지불한다는 뜻이면 "결재"가 아니라 "결제"가 맞습니다 ("결재"는 승인한다는 뜻, 견적·발주 문서 작성 시 특히 주의)'},
+    {re:'품질을\\s*재고|경쟁력을\\s*재고|효율을\\s*재고', suggestion:'품질을 제고/경쟁력을 제고/효율을 제고', note:'"높인다"는 뜻이면 "재고"가 아니라 "제고"가 맞습니다 ("재고"는 다시 생각한다/남은 물량이라는 뜻)'},
+    {re:'치루(?:다|고|어|는|었)', suggestion:'치르(다/고/러/는/렀)', note:'"치르다"가 기본형이므로 "치루다"가 아니라 "치르다"로 활용해야 합니다 (매우 흔한 오류)'},
+    {re:'설겆이', suggestion:'설거지', note:'"설겆이"는 잘못된 표기이며 "설거지"가 맞습니다'},
+    {re:'일부로', suggestion:'일부러', note:'"일부러"가 표준어입니다'},
+    {re:'돋구(?:다|어|는|었)', suggestion:'돋우(다/어/는/었)', note:'안경 도수를 높이는 경우가 아니라면 "돋구다"가 아니라 "돋우다"가 맞습니다 (입맛·흥미 등)'},
+    {re:'안성마춤', suggestion:'안성맞춤', note:'"안성마춤"은 잘못된 표기이며 "안성맞춤"이 맞습니다'},
+    {re:'할런지', suggestion:'할는지', note:'"할런지"는 잘못된 표기이며 "할는지"가 맞습니다'},
+    {re:'일찌기', suggestion:'일찍이', note:'"일찌기"는 잘못된 표기이며 "일찍이"가 맞습니다'},
+    {re:'생각치도|생각치\\s*못', suggestion:'생각지도/생각지 못', note:'안울림소리 받침 뒤에서 "하지"의 준말은 "치"가 아니라 "지"가 맞습니다 (예: 생각하지→생각지)'},
+    {re:'오랜동안', suggestion:'오랫동안', note:'"오랜"은 관형사이므로 뒤에 명사가 와야 하며, "동안"과 결합할 때는 "오랫동안"이 맞습니다'},
+    {re:'구지', suggestion:'굳이', note:'"구지"는 잘못된 표기이며 "굳이"가 맞습니다'},
+  ];
+
+  function escapeHtml(s){
+    return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  }
+
+  function runChecker(){
+    const raw = document.getElementById('chkInput').value;
+    const resultEl = document.getElementById('chkResult');
+    const detailEl = document.getElementById('chkDetail');
+    if(!raw.trim()){
+      resultEl.innerHTML = '<span class="checker-empty">문구를 입력해주세요.</span>';
+      detailEl.innerHTML = '';
+      return;
+    }
+    const combined = new RegExp(DICT.map(d=>'('+d.re+')').join('|'), 'gi');
+    let out = '';
+    let last = 0;
+    let m;
+    const found = [];
+    while((m = combined.exec(raw)) !== null){
+      let idx = -1;
+      for(let i=1;i<m.length;i++){ if(m[i] !== undefined){ idx = i-1; break; } }
+      if(idx === -1){ if(combined.lastIndex === m.index) combined.lastIndex++; continue; }
+      const entry = DICT[idx];
+      out += escapeHtml(raw.slice(last, m.index));
+      out += '<mark class="'+entry.cls+'" title="'+escapeHtml(entry.tip)+'">'+escapeHtml(m[0])+'</mark>';
+      last = m.index + m[0].length;
+      found.push({text:m[0], cls:entry.cls, tip:entry.tip});
+      if(combined.lastIndex === m.index) combined.lastIndex++;
+    }
+    out += escapeHtml(raw.slice(last));
+    resultEl.innerHTML = out;
+
+    let detailHtml = '';
+    detailHtml += '<div class="checker-subhead">법령 검토 결과</div>';
+    if(found.length === 0){
+      detailHtml += '<div class="checker-empty">사전에 등록된 주의·금지 표현이 발견되지 않았습니다. (사전에 없는 표현일 수도 있으니 참고용으로만 활용하세요)</div>';
+    } else {
+      const labels = {r:'사용 불가', y:'주의·조건부', g:'사용 가능'};
+      detailHtml += found.map(f=>
+        '<div class="checker-detail-item '+f.cls+'"><b>"'+escapeHtml(f.text)+'"</b> — '+labels[f.cls]+' · '+escapeHtml(f.tip)+'</div>'
+      ).join('');
+    }
+
+    // 맞춤법·표현 확인 (법령 검토와 별개로 원문 전체를 다시 스캔)
+    const spellFound = [];
+    SPELL_DICT.forEach(s=>{
+      const re = new RegExp(s.re, 'g');
+      let sm;
+      while((sm = re.exec(raw)) !== null){
+        spellFound.push({text:sm[0], suggestion:s.suggestion, note:s.note});
+        if(sm[0].length === 0) re.lastIndex++;
+      }
+    });
+    detailHtml += '<div class="checker-subhead">맞춤법·표현 확인</div>';
+    if(spellFound.length === 0){
+      detailHtml += '<div class="checker-empty">발견된 맞춤법 오류가 없습니다. (자주 나오는 오류 42종만 등록된 참고용 사전이라, 놓치는 오류가 있을 수 있습니다)</div>';
+    } else {
+      detailHtml += spellFound.map(s=>
+        '<div class="checker-detail-item sp">✏️ <b>"'+escapeHtml(s.text)+'"</b> → "'+escapeHtml(s.suggestion)+'" · '+escapeHtml(s.note)+'</div>'
+      ).join('');
+    }
+    detailEl.innerHTML = detailHtml;
+    window._lastCheck = {raw, found, spellFound};
+  }
+
+  function copyResult(){
+    const btn = document.getElementById('copyBtn');
+    const data = window._lastCheck;
+    if(!data || !data.raw){
+      alert('먼저 "문구 검수하기"를 눌러 검수를 실행해주세요.');
+      return;
+    }
+    const labels = {r:'사용 불가', y:'주의·조건부', g:'사용 가능'};
+    let text = '[검수 대상 문구]\n' + data.raw + '\n\n[법령 검토 결과]\n';
+    text += data.found.length === 0
+      ? '- 사전에 등록된 주의·금지 표현 없음\n'
+      : data.found.map(f=>'- "'+f.text+'" → '+labels[f.cls]+' : '+f.tip).join('\n') + '\n';
+    text += '\n[맞춤법·표현 확인]\n';
+    text += data.spellFound.length === 0
+      ? '- 발견된 맞춤법 오류 없음\n'
+      : data.spellFound.map(s=>'- "'+s.text+'" → "'+s.suggestion+'" : '+s.note).join('\n') + '\n';
+    text += '\n(참고용 1차 스크리닝 결과입니다. 최종 확정 전 담당자/식약처 확인 필요)';
+
+    const done = ()=>{
+      btn.textContent = '✅ 복사 완료!';
+      btn.classList.add('copied');
+      setTimeout(()=>{ btn.textContent = '📋 결과 복사하기'; btn.classList.remove('copied'); }, 1800);
+    };
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(text).then(done).catch(()=>{ fallbackCopy(text, done); });
+    } else {
+      fallbackCopy(text, done);
+    }
+  }
+
+  function fallbackCopy(text, done){
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    try{ document.execCommand('copy'); done(); }catch(e){ alert('복사에 실패했습니다. 직접 드래그해서 복사해주세요.'); }
+    document.body.removeChild(ta);
+  }
+
+  // ===== 라벨 체크리스트 =====
+  const CHECKLISTS = {
+    cl1: [
+      '화장품의 명칭', '영업자의 상호 및 주소', '전성분(모든 성분)', '내용물의 용량 또는 중량',
+      '제조번호', '사용기한 또는 개봉 후 사용기간', '가격', '"기능성화장품" 글자 또는 도안',
+      '사용할 때의 주의사항', '화장품 바코드', '기능성화장품 심사·보고 효능·효과, 용법·용량',
+      '성분명을 제품명에 사용한 경우 그 성분명·함량', '인체 세포·조직 배양액 함유 시 함량',
+      '천연·유기농 표시·광고 시 원료 함량', '수입화장품 제조국·제조회사명·소재지',
+      '"의약품이 아님" 문구 (해당 기능성화장품만)', '영유아·어린이 보존제 함량 (해당 제품만)'
+    ],
+    cl2: [
+      '화장품의 명칭', '영업자의 상호', '제조번호', '사용기한 또는 개봉 후 사용기간'
+    ]
+  };
+
+  function loadChecklistState(){
+    try{ return JSON.parse(localStorage.getItem('cosmeticChecklistState') || '{}'); }
+    catch(e){ return {}; }
+  }
+  function saveChecklistState(state){
+    try{ localStorage.setItem('cosmeticChecklistState', JSON.stringify(state)); }catch(e){}
+  }
+
+  function renderChecklist(key){
+    const items = CHECKLISTS[key];
+    const body = document.getElementById(key+'body');
+    const state = loadChecklistState();
+    body.innerHTML = items.map((label, i)=>{
+      const id = key+'_'+i;
+      const checked = !!state[id];
+      return '<div class="checklist-item'+(checked?' done':'')+'">'
+        + '<input type="checkbox" id="'+id+'" '+(checked?'checked':'')+' onchange="toggleChecklistItem(\''+key+'\','+i+')">'
+        + '<label for="'+id+'">'+ (i+1) +'. '+escapeHtml(label)+'</label></div>';
+    }).join('');
+    updateChecklistProgress(key);
+  }
+
+  function toggleChecklistItem(key, i){
+    const id = key+'_'+i;
+    const state = loadChecklistState();
+    state[id] = !state[id];
+    saveChecklistState(state);
+    renderChecklist(key);
+  }
+
+  function updateChecklistProgress(key){
+    const items = CHECKLISTS[key];
+    const state = loadChecklistState();
+    let count = 0;
+    items.forEach((_, i)=>{ if(state[key+'_'+i]) count++; });
+    document.getElementById(key+'progress').textContent = count+'/'+items.length;
+  }
+
+  function resetChecklist(key){
+    if(!confirm('이 체크리스트를 전부 초기화할까요?')) return;
+    const state = loadChecklistState();
+    CHECKLISTS[key].forEach((_, i)=>{ delete state[key+'_'+i]; });
+    saveChecklistState(state);
+    renderChecklist(key);
+  }
+
+  renderChecklist('cl1');
+  renderChecklist('cl2');
+</script>
+</body>
+</html>
