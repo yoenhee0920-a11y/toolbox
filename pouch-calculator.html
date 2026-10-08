@@ -64,6 +64,23 @@
     </table>
   </div>
 
+  <div class="card">
+    <h2>■ 동판 규격 & 제작비</h2>
+    <div class="grid">
+      <div><label>배치 구조</label><select id="layout"><option value="2">2폭 (전·후·전·후)</option><option value="1">1폭 (전·후)</option></select></div>
+      <div><label>여유분 (mm)</label><input id="spare" type="number" value="140" inputmode="numeric"></div>
+      <div style="grid-column:1/3"><label>실제 동판세로 확인값 (mm, 선택 — 알면 입력)</label><input id="override" type="number" placeholder="비워두면 자동 추천" inputmode="numeric"></div>
+    </div>
+    <table style="margin-top:10px">
+      <tr><td>동판 가로 (피치×컷트)</td><td class="big" id="p-w"></td></tr>
+      <tr><td>필요 세로폭 (Y×배수+여유분)</td><td id="p-need"></td></tr>
+      <tr><td>동판 세로 (800/900/1000)</td><td class="big" id="p-h"></td></tr>
+      <tr class="hd"><td>신규 동판 제작비 (도수 반영)</td><td class="big" id="p-make"></td></tr>
+      <tr class="ot"><td>동판 수정비 (도수 반영)</td><td class="big" id="p-fix"></td></tr>
+    </table>
+    <div class="note" style="margin-top:6px">동판 가로는 피치×컷트수 중 500mm에 가장 가까운 값, 제작비 = 가로(cm)×세로(cm)×50원×도수, 수정비는 ×30원. 배수가 2·6인 예외 제품은 실제 확인값을 입력하세요.</div>
+  </div>
+
   <div class="note">
     · 현대포장은 수량과 무관하게 고정단가(반롤 가산 없음), 타업체는 반롤 +15%.<br>
     · 사쎄·자동롤 제품은 대상이 아닙니다. 면적 95~270cm² 범위를 벗어나면 오차가 커집니다.<br>
@@ -115,7 +132,22 @@
     });
     return out;
   }
-  var api = { calc: calc };
+  function plate(inp) {
+    var margin = inp.kind === 'shape' ? 5 : 0;
+    var pitch = inp.x + margin, best = null, cands = [];
+    for (var n = 1; n <= 8; n++) {
+      var v = pitch * n, d = Math.abs(v - 500);
+      cands.push({ n: n, w: v, diff: d });
+      if (best === null || d < best.diff) best = { n: n, w: v, diff: d };
+    }
+    var need = inp.y * (inp.layout === '1' ? 2 : 4) + inp.spare;
+    var rec = need <= 800 ? 800 : (need <= 900 ? 900 : 1000);
+    var h = inp.override > 0 ? inp.override : rec;
+    var wcm = best.w / 10, hcm = h / 10;
+    return { pitch: pitch, cuts: best.n, width: best.w, need: need, rec: rec, height: h,
+             isOverride: inp.override > 0, make: wcm * hcm * 50 * inp.dosu, fix: wcm * hcm * 30 * inp.dosu };
+  }
+  var api = { calc: calc, plate: plate };
   if (typeof module !== 'undefined' && module.exports) module.exports = api; else root.PouchCalc = api;
 })(this);
 
@@ -144,6 +176,19 @@
       $('op-' + k).textContent = d.other.preLo + '~' + d.other.preHi + '원';
     });
   }
+  function renderPlate() {
+    var x = +$('x').value, y = +$('y').value;
+    if (!(x > 0 && y > 0)) return;
+    var p = PouchCalc.plate({ kind: $('kind').value, x: x, y: y, dosu: +$('dosu').value || 4,
+      layout: $('layout').value, spare: +$('spare').value || 0, override: +$('override').value || 0 });
+    $('p-w').textContent = p.width + 'mm (' + p.cuts + '컷트, 피치 ' + p.pitch + ')';
+    $('p-need').textContent = p.need + 'mm';
+    $('p-h').textContent = p.height + 'mm' + (p.isOverride ? ' (확인값)' : ' (추천 ' + p.rec + ')');
+    $('p-make').textContent = won(Math.round(p.make));
+    $('p-fix').textContent = won(Math.round(p.fix));
+  }
+  ['kind','zipper','x','y','dosu','loss','margin','layout','spare','override'].forEach(function (id) { $(id).addEventListener('input', renderPlate); });
+  renderPlate();
   ['kind','zipper','x','y','dosu','loss','margin'].forEach(function (id) { $(id).addEventListener('input', render); });
   render();
 </script>
