@@ -1,275 +1,151 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>파우치 롤당 수량 계산기</title>
-<link rel="apple-touch-icon" href="data:image/png;base64,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">
-<link rel="icon" href="data:image/png;base64,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">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="파우치계산기">
-<meta name="theme-color" content="#0A66FF">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>파우치 롤당 수량 & 예상 단가 계산기</title>
 <style>
-  :root {
-    --blue: #0A66FF;
-    --bg: #F2F4F7;
-    --card: #FFFFFF;
-    --text: #1C1C1E;
-    --sub: #8E8E93;
-    --border: #E5E5EA;
-    --green: #1FA971;
-    --red: #E5484D;
-  }
-  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-  body {
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Segoe UI", Roboto, sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    padding: 16px 14px 40px;
-  }
-  h1 { font-size: 19px; font-weight: 700; text-align: center; margin: 4px 0 16px; }
-  .card {
-    background: var(--card);
-    border-radius: 16px;
-    padding: 16px;
-    margin-bottom: 14px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
-  }
-  .card h2 {
-    font-size: 13px; font-weight: 700; color: var(--sub);
-    text-transform: uppercase; letter-spacing: 0.03em; margin: 0 0 10px;
-  }
-  .segmented { display: flex; background: #EEF0F3; border-radius: 10px; padding: 3px; gap: 3px; }
-  .segmented button {
-    flex: 1; border: none; background: transparent; padding: 10px 6px;
-    font-size: 14px; font-weight: 600; color: var(--text); border-radius: 8px;
-    transition: all .15s ease;
-  }
-  .segmented button.active { background: var(--blue); color: #fff; box-shadow: 0 1px 3px rgba(10,102,255,0.4); }
-  .field { margin-bottom: 12px; }
-  .field:last-child { margin-bottom: 0; }
-  .field label {
-    display: flex; justify-content: space-between; align-items: baseline;
-    font-size: 13.5px; font-weight: 600; margin-bottom: 6px; color: var(--text);
-  }
-  .field label .hint { font-weight: 400; font-size: 11.5px; color: var(--sub); }
-  .field input {
-    width: 100%; font-size: 17px; padding: 11px 12px; border-radius: 10px;
-    border: 1px solid var(--border); background: #FAFAFB; color: var(--text); font-weight: 600;
-  }
-  .field input:focus { outline: none; border-color: var(--blue); background: #fff; }
-  .result-row {
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 9px 0; border-bottom: 1px solid var(--border); font-size: 14px;
-  }
-  .result-row:last-child { border-bottom: none; }
-  .result-row .val { font-weight: 700; font-variant-numeric: tabular-nums; }
-  .result-row.final {
-    margin-top: 4px; padding-top: 14px; border-top: 2px solid var(--text); border-bottom: none;
-  }
-  .result-row.final .label { font-size: 15px; font-weight: 700; }
-  .result-row.final .val { font-size: 22px; color: var(--blue); }
-  .diagram-wrap { text-align: center; overflow-x: auto; }
-  .diagram-wrap svg { max-width: 100%; height: auto; }
-  .note { font-size: 12px; color: var(--sub); margin-top: 8px; line-height: 1.5; }
-  .badge {
-    display: inline-block; background: var(--green); color: #fff; font-size: 11.5px;
-    font-weight: 700; padding: 3px 9px; border-radius: 20px; margin-left: 6px;
-  }
-  .formula-list { font-size: 12px; color: var(--sub); line-height: 1.7; margin: 0; padding-left: 16px; }
+  :root { --blue:#4472C4; --hd:#1F4E78; --hdbg:#EDF3FB; --ot:#974706; --otbg:#FFF3EA; --av:#375623; --avbg:#E3F1D9; }
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif; margin: 0; background:#f5f6f8; color:#222; }
+  .wrap { max-width: 640px; margin: 0 auto; padding: 16px; }
+  h1 { font-size: 18px; margin: 4px 0 2px; }
+  .sub { font-size: 12px; color:#888; margin-bottom: 12px; }
+  .card { background:#fff; border-radius:10px; padding:14px; margin-bottom:12px; box-shadow:0 1px 3px rgba(0,0,0,.08); }
+  .card h2 { font-size:14px; margin:0 0 10px; color:var(--blue); }
+  .grid { display:grid; grid-template-columns: 1fr 1fr; gap:10px; }
+  label { font-size:12px; color:#555; display:block; margin-bottom:3px; }
+  input, select { width:100%; padding:9px; border:1px solid #ccd; border-radius:6px; font-size:15px; background:#FFFDE0; }
+  .warn { color:#C00000; font-size:12px; font-weight:bold; min-height:16px; margin-top:6px; }
+  table { width:100%; border-collapse:collapse; font-size:14px; }
+  th { background:var(--blue); color:#fff; padding:7px; font-size:13px; }
+  td { padding:8px 6px; text-align:center; border-bottom:1px solid #eee; }
+  td:first-child { text-align:left; font-size:12px; }
+  tr.hd td { background:var(--hdbg); color:var(--hd); } tr.ot td { background:var(--otbg); color:var(--ot); }
+  tr.av td { background:var(--avbg); color:var(--av); font-weight:bold; }
+  td.big { font-size:15px; font-weight:bold; } tr.av td.big { font-size:18px; }
+  tr.small td { color:#999; font-size:11px; background:#fff; }
+  .note { font-size:11px; color:#888; line-height:1.5; }
 </style>
 </head>
 <body>
+<div class="wrap">
+  <h1>파우치 롤당 수량 & 예상 단가 계산기</h1>
+  <div class="sub">2026.05~ 인상 후 기준 · 참고용 (정확한 견적은 인쇄소 확인)</div>
 
-<h1>📐 파우치 롤당 수량 계산기</h1>
+  <div class="card">
+    <h2>■ 스펙 입력</h2>
+    <div class="grid">
+      <div><label>파우치 종류</label><select id="kind"><option value="shape">형상파우치</option><option value="three">삼방파우치</option></select></div>
+      <div><label>지퍼 여부</label><select id="zipper"><option value="0">없음</option><option value="1">있음 (+17%)</option></select></div>
+      <div><label>가로 X (mm)</label><input id="x" type="number" value="110" inputmode="decimal"></div>
+      <div><label>세로 Y (mm)</label><input id="y" type="number" value="170" inputmode="decimal"></div>
+      <div><label>총 도수 (모르면 4)</label><input id="dosu" type="number" value="4" inputmode="numeric"></div>
+      <div><label>로스율 (%)</label><input id="loss" type="number" value="10" inputmode="decimal"></div>
+      <div><label>마진 - 형상용 (mm)</label><input id="margin" type="number" value="5" inputmode="decimal"></div>
+      <div><label>면적 (cm²)</label><input id="area" readonly style="background:#f2f2f2"></div>
+    </div>
+    <div class="warn" id="warn"></div>
+  </div>
 
-<div class="card">
-  <h2>파우치 종류</h2>
-  <div class="segmented" id="typeSeg">
-    <button class="active" data-val="형상파우치">형상파우치</button>
-    <button data-val="삼방파우치">삼방파우치</button>
+  <div class="card">
+    <h2>▶ 예상 견적</h2>
+    <table>
+      <tr><th style="width:34%">구분</th><th>한롤 (6,000m)</th><th>반롤 (3,000m)</th></tr>
+      <tr><td>예상 생산 수량(개)</td><td class="big" id="q-full"></td><td class="big" id="q-half"></td></tr>
+      <tr class="hd"><td>현대포장 단가</td><td class="big" id="h-full"></td><td class="big" id="h-half"></td></tr>
+      <tr class="ot"><td>타업체 단가</td><td class="big" id="o-full"></td><td class="big" id="o-half"></td></tr>
+      <tr class="av"><td>★ 평균 단가<br>(거래처 제출용)</td><td class="big" id="a-full"></td><td class="big" id="a-half"></td></tr>
+      <tr class="hd"><td>총액 - 현대포장</td><td id="ht-full"></td><td id="ht-half"></td></tr>
+      <tr class="ot"><td>총액 - 타업체</td><td id="ot-full"></td><td id="ot-half"></td></tr>
+      <tr class="av"><td>총액 - 평균</td><td id="at-full"></td><td id="at-half"></td></tr>
+      <tr class="small"><td>인상 전 참고 - 현대</td><td id="hp-full"></td><td id="hp-half"></td></tr>
+      <tr class="small"><td>인상 전 참고 - 타업체</td><td id="op-full"></td><td id="op-half"></td></tr>
+    </table>
+  </div>
+
+  <div class="note">
+    · 현대포장은 수량과 무관하게 고정단가(반롤 가산 없음), 타업체는 반롤 +15%.<br>
+    · 사쎄·자동롤 제품은 대상이 아닙니다. 면적 95~270cm² 범위를 벗어나면 오차가 커집니다.<br>
+    · 타업체는 제이팩·진영케미칼·대경인쇄·디팩 평균이며 업체별 편차가 큽니다(같은 사양 한롤 43~55원).
   </div>
 </div>
-
-<div class="card">
-  <h2>롤 종류</h2>
-  <div class="segmented" id="rollSeg">
-    <button class="active" data-val="한롤">한롤 (6,000m)</button>
-    <button data-val="반롤">반롤 (3,000m)</button>
-  </div>
-</div>
-
-<div class="card">
-  <h2>파우치 사이즈 / 조건 입력</h2>
-  <div class="field">
-    <label>파우치 가로 X (mm) <span class="hint">진행방향 길이</span></label>
-    <input type="number" id="xInput" value="200" inputmode="decimal">
-  </div>
-  <div class="field">
-    <label>파우치 세로 Y (mm) <span class="hint">폭(열수) 판정용</span></label>
-    <input type="number" id="yInput" value="120" inputmode="decimal">
-  </div>
-  <div class="field" id="marginField">
-    <label>마진 - 형상파우치용 (mm) <span class="hint">피치에 가산</span></label>
-    <input type="number" id="marginInput" value="5" inputmode="decimal">
-  </div>
-  <div class="field">
-    <label>로스율 (%) <span class="hint">인쇄/재단/셋업 로스</span></label>
-    <input type="number" id="lossInput" value="10" inputmode="decimal">
-  </div>
-</div>
-
-<div class="card">
-  <h2>계산 결과</h2>
-  <div class="result-row"><span class="label">폭 (다열 수)</span><span class="val" id="rWidth">-</span></div>
-  <div class="result-row"><span class="label">피치 (m)</span><span class="val" id="rPitch">-</span></div>
-  <div class="result-row"><span class="label">1열당 이론 수량 (개)</span><span class="val" id="rPerLane">-</span></div>
-  <div class="result-row"><span class="label">총 이론 수량 (개)</span><span class="val" id="rTotal">-</span></div>
-  <div class="result-row final"><span class="label">롤당 예상 생산 수량</span><span class="val" id="rFinal">-</span></div>
-</div>
-
-<div class="card">
-  <h2>배열판 미리보기 <span class="badge" id="widthBadge">2폭</span></h2>
-  <div class="diagram-wrap" id="diagramWrap"></div>
-  <div class="note" id="diagramNote"></div>
-</div>
-
-<div class="card">
-  <h2>계산식 참고</h2>
-  <ul class="formula-list">
-    <li>폭(다열 수) = Y×4+30 값이 500 미만이면 3폭, 500 이상이면 2폭</li>
-    <li>피치(m) = X/1000 + 마진(형상파우치만 가산, 삼방파우치는 0)</li>
-    <li>1열당 수량 = 롤 길이(한롤 6,000m / 반롤 3,000m) ÷ 피치(m)</li>
-    <li>총 이론 수량 = 1열당 수량 × 폭</li>
-    <li>롤당 예상 생산 수량 = 총 이론 수량 × (1 − 로스율)</li>
-  </ul>
-</div>
-
 <script>
-let state = { type: '형상파우치', roll: '한롤' };
+// 파우치 롤당 수량 & 예상 단가 계산 로직 (엑셀 '수량_견적계산기'와 동일 수식)
+(function (root) {
+  var COEF = {
+    hyundai: { a: 9.582, b: 0.2469, c: 3.003 },   // 현대포장
+    other:   { a: 8.15,  b: 0.2185, c: 6.188 }    // 타업체 (제이팩·진영·대경·디팩 등)
+  };
+  var HALF_PREMIUM_OTHER = 0.15;   // 타업체 반롤 가산 (현대포장은 수량 무관 고정단가라 0)
+  var ZIPPER = 1.17;               // 지퍼 가산
+  var RANGE_HYUNDAI = [3.6, 3.6];  // [하한, 상한] 원
+  var RANGE_OTHER = { full: [12, 3], half: [8, 7] };
+  var JUMP_HYUNDAI = 1.288;        // 인상 전 환산
+  var JUMP_OTHER = [1.829, 1.239];
 
-function fmt(n, d=1) {
-  return n.toLocaleString('ko-KR', { minimumFractionDigits: d, maximumFractionDigits: d });
-}
+  function round(x) { return Math.floor(x + 0.5); }
 
-function bindSeg(id, key) {
-  const seg = document.getElementById(id);
-  seg.querySelectorAll('button').forEach(btn => {
-    btn.addEventListener('click', () => {
-      seg.querySelectorAll('button').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      state[key] = btn.dataset.val;
-      if (key === 'type') {
-        document.getElementById('marginField').style.display = (state.type === '형상파우치') ? 'block' : 'none';
-      }
-      calc();
+  function calc(inp) {
+    var shape = inp.kind === 'shape' ? 1 : 0;
+    var area = (inp.x / 10) * (inp.y / 10);
+    var width = inp.y * 4 + 30 < 500 ? 3 : 2;
+    var pitch = inp.x / 1000 + (shape ? inp.margin : 0);
+    var out = { area: area, shape: shape, width: width, warn: (area < 90 || area > 270) };
+    var zip = inp.zipper ? ZIPPER : 1;
+    var corr = Math.max(inp.dosu - 4, 0);
+    var hd = COEF.hyundai.a + COEF.hyundai.b * area + COEF.hyundai.c * shape;
+    var ot = COEF.other.a + COEF.other.b * area + COEF.other.c * shape;
+
+    ['full', 'half'].forEach(function (k) {
+      var roll = k === 'full' ? 6000 : 3000;
+      var qty = round((roll / pitch) * width * (1 - inp.loss));
+      var hdP = round((hd + corr) * zip);
+      var otP = round((ot + corr + (k === 'half' ? ot * HALF_PREMIUM_OTHER : 0)) * zip);
+      var avg = round((hdP + otP) / 2);
+      var r = RANGE_OTHER[k];
+      out[k] = {
+        qty: qty,
+        hyundai: { price: hdP, lo: round(hdP - RANGE_HYUNDAI[0]), hi: round(hdP + RANGE_HYUNDAI[1]),
+                   total: qty * hdP, pre: round(hdP / JUMP_HYUNDAI) },
+        other:   { price: otP, lo: round(otP - r[0]), hi: round(otP + r[1]), total: qty * otP,
+                   preLo: round(otP / JUMP_OTHER[0]), preHi: round(otP / JUMP_OTHER[1]) },
+        avg:     { price: avg, total: qty * avg }
+      };
     });
-  });
-}
-bindSeg('typeSeg', 'type');
-bindSeg('rollSeg', 'roll');
-
-['xInput','yInput','marginInput','lossInput'].forEach(id => {
-  document.getElementById(id).addEventListener('input', calc);
-});
-
-// ---- SVG 배열판(격자) 그리기 ----
-function renderDiagram(type, width) {
-  const rows = 4;
-  const boxW = 70, boxH = 48;
-  const isShape = (type === '형상파우치');
-  const rowGapPx = isShape ? 12 : 16;
-  const rowGapLabel = isShape ? '5mm' : '10mm';
-
-  // 열(컬럼) 사이 간격: 형상파우치는 5mm/10~15mm 교차, 삼방파우치는 10mm 균일
-  const colGaps = [];
-  for (let i = 0; i < width - 1; i++) {
-    if (isShape) {
-      colGaps.push(i % 2 === 0 ? { mm: '5mm', px: 10 } : { mm: '10~15mm', px: 22 });
-    } else {
-      colGaps.push({ mm: '10mm', px: 16 });
-    }
+    return out;
   }
+  var api = { calc: calc };
+  if (typeof module !== 'undefined' && module.exports) module.exports = api; else root.PouchCalc = api;
+})(this);
 
-  const topMargin = 34;
-  const leftMargin = 46;
-  const colTotalPx = width * boxW + colGaps.reduce((s,g) => s + g.px, 0);
-  const rowTotalPx = rows * boxH + (rows - 1) * rowGapPx;
-  const svgW = leftMargin + colTotalPx + 10;
-  const svgH = topMargin + rowTotalPx + 10;
-
-  let svg = `<svg viewBox="0 0 ${svgW} ${svgH}" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system,sans-serif">`;
-
-  // outer frame
-  svg += `<rect x="${leftMargin-4}" y="${topMargin-4}" width="${colTotalPx+8}" height="${rowTotalPx+8}" fill="none" stroke="#C7C7CC" stroke-width="1.5" rx="4"/>`;
-
-  // column x positions
-  let xPositions = [];
-  let x = leftMargin;
-  for (let c = 0; c < width; c++) {
-    xPositions.push(x);
-    x += boxW;
-    if (c < colGaps.length) x += colGaps[c].px;
-  }
-
-  // boxes
-  for (let r = 0; r < rows; r++) {
-    const y = topMargin + r * (boxH + rowGapPx);
-    for (let c = 0; c < width; c++) {
-      svg += `<rect x="${xPositions[c]}" y="${y}" width="${boxW}" height="${boxH}" fill="#D6D6DA" stroke="#AEAEB2" stroke-width="1"/>`;
-    }
-  }
-
-  // column gap labels (top, red)
-  for (let i = 0; i < colGaps.length; i++) {
-    const gapCenterX = xPositions[i] + boxW + colGaps[i].px / 2;
-    svg += `<line x1="${gapCenterX}" y1="${topMargin-8}" x2="${gapCenterX}" y2="${topMargin-2}" stroke="${'#E5484D'}" stroke-width="1.2"/>`;
-    svg += `<text x="${gapCenterX}" y="${topMargin-12}" font-size="9" fill="#E5484D" font-weight="700" text-anchor="middle">${colGaps[i].mm}</text>`;
-  }
-
-  // row gap label (left, red) - only first gap labeled, applies to all
-  if (rows > 1) {
-    const gapCenterY = topMargin + boxH + rowGapPx / 2;
-    svg += `<text x="${leftMargin-8}" y="${gapCenterY+3}" font-size="9" fill="#E5484D" font-weight="700" text-anchor="end">${rowGapLabel}</text>`;
-  }
-
-  svg += `</svg>`;
-  document.getElementById('diagramWrap').innerHTML = svg;
-
-  const noteText = isShape
-    ? `가로 간격 5mm / 10~15mm 교차, 세로 간격 ${rowGapLabel} 균일 (실제 배열은 작업자·설비에 따라 다를 수 있음)`
-    : `가로·세로 모두 10mm 간격 균일 (실제 배열은 작업자·설비에 따라 다를 수 있음)`;
-  document.getElementById('diagramNote').textContent = noteText;
-}
-
-function calc() {
-  const X = parseFloat(document.getElementById('xInput').value) || 0;
-  const Y = parseFloat(document.getElementById('yInput').value) || 0;
-  const marginMm = parseFloat(document.getElementById('marginInput').value) || 0;
-  const lossPct = parseFloat(document.getElementById('lossInput').value) || 0;
-
-  const width = (Y * 4 + 30 < 500) ? 3 : 2;
-  const marginM = (state.type === '형상파우치') ? marginMm / 1000 : 0;
-  const pitch = (X / 1000) + marginM;
-  const rollLen = (state.roll === '한롤') ? 6000 : 3000;
-  const perLane = pitch > 0 ? rollLen / pitch : 0;
-  const total = perLane * width;
-  const final = total * (1 - lossPct / 100);
-
-  document.getElementById('rWidth').textContent = width + '폭';
-  document.getElementById('rPitch').textContent = fmt(pitch, 3) + ' m';
-  document.getElementById('rPerLane').textContent = fmt(perLane) + ' 개';
-  document.getElementById('rTotal').textContent = fmt(total) + ' 개';
-  document.getElementById('rFinal').textContent = fmt(final) + ' 개';
-  document.getElementById('widthBadge').textContent = width + '폭';
-
-  renderDiagram(state.type, width);
-}
-
-calc();
 </script>
-
+<script>
+  var $ = function (id) { return document.getElementById(id); };
+  var won = function (n) { return n.toLocaleString('ko-KR') + '원'; };
+  function render() {
+    var inp = { kind: $('kind').value, zipper: $('zipper').value === '1',
+      x: +$('x').value, y: +$('y').value, dosu: +$('dosu').value || 4,
+      loss: (+$('loss').value || 0) / 100, margin: (+$('margin').value || 0) / 1000 };
+    if (!(inp.x > 0 && inp.y > 0)) return;
+    var r = PouchCalc.calc(inp);
+    $('area').value = r.area.toFixed(1);
+    $('warn').textContent = r.warn ? '⚠ 학습범위(95~270cm²) 밖 — 예측 오차가 클 수 있음' : '';
+    ['full', 'half'].forEach(function (k) {
+      var d = r[k];
+      $('q-' + k).textContent = d.qty.toLocaleString('ko-KR');
+      $('h-' + k).innerHTML = d.hyundai.price + '원<br><small>(' + d.hyundai.lo + '~' + d.hyundai.hi + ')</small>';
+      $('o-' + k).innerHTML = d.other.price + '원<br><small>(' + d.other.lo + '~' + d.other.hi + ')</small>';
+      $('a-' + k).textContent = d.avg.price + '원';
+      $('ht-' + k).textContent = won(d.hyundai.total);
+      $('ot-' + k).textContent = won(d.other.total);
+      $('at-' + k).textContent = won(d.avg.total);
+      $('hp-' + k).textContent = d.hyundai.pre + '원';
+      $('op-' + k).textContent = d.other.preLo + '~' + d.other.preHi + '원';
+    });
+  }
+  ['kind','zipper','x','y','dosu','loss','margin'].forEach(function (id) { $(id).addEventListener('input', render); });
+  render();
+</script>
 </body>
 </html>
