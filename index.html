@@ -4,13 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>카톤/인박스/패드 단가 계산기</title>
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="단가계산기">
-<meta name="mobile-web-app-capable" content="yes">
-<meta name="theme-color" content="#4472C4">
-<link rel="apple-touch-icon" href="data:image/png;base64,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">
-<link rel="icon" href="data:image/png;base64,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">
 <style>
   :root{
     --blue:#4472C4; --blue-light:#D9E2F3; --red:#C00000; --gray:#666666; --gray-light:#f4f5f7;
@@ -69,7 +62,7 @@
 
 <header>
   <h1>카톤 · 인박스 · 패드 단가 계산기</h1>
-  <p>모든 단가는 부가세 별도 · 데이터 기준 2026-08-04(513건) · 참고용</p>
+  <p>모든 단가는 부가세 별도 · 데이터 기준 2026-10-08(1148건) · 참고용</p>
 </header>
 
 <nav>
@@ -109,19 +102,10 @@
     </div>
     <div class="card">
       <div class="result" style="border-top:none; padding-top:0; margin-top:0;">
-        <div class="label">예상단가 (B골 · B형(톰슨))</div>
-        <div class="price" id="i_tom_price">-</div>
-        <div class="range" id="i_tom_range">-</div>
-        <div class="warn" id="i_tom_warn" style="display:none;"></div>
-      </div>
-    </div>
-    <div class="card">
-      <div class="result" style="border-top:none; padding-top:0; margin-top:0;">
-        <div class="label">예상단가 (B골 · 자동형)</div>
-        <div class="price" id="i_auto_price">-</div>
-        <div class="range" id="i_auto_range">-</div>
-        <div class="warn" id="i_auto_warn" style="display:none;"></div>
-        <div class="subnote">자동접착 최소 사이즈 조건: 장+폭≥400, 폭≥160, 폭+고≥285mm — 미충족 시 "자동 불가"</div>
+        <div class="label">예상단가 (B골 · 톰슨/자동 통합)</div>
+        <div class="price" id="i_price">-</div>
+        <div class="range" id="i_range">-</div>
+        <div class="warn" id="i_warn" style="display:none;"></div>
       </div>
     </div>
   </section>
@@ -170,9 +154,9 @@
         · 카톤/인박스: 예상단가 = 절편 + 기울기 × (장+폭+고)<br>
         · 낱장/재단형(패드): 예상단가 = 절편 + 기울기 × (장×폭÷1000)<br>
         · 칸막이형(패드): 예상단가 = 절편 + 기울기1×(장×폭÷1000) + 기울기2×고<br>
-        · 오차범위는 회귀식 잔차 표준편차(±1σ, 약 68% 커버) 참고치입니다. 실제 견적과 차이가 크게 나면 별도 확인하세요.<br>
+        · 오차범위는 실측 잔차의 상위 80% 수준(분위수) 참고치입니다. 카톤/인박스는 예상단가 대비 비율로, 패드류는 절대금액으로 계산합니다. 실제 견적과 차이가 크게 나면 별도 확인하세요.<br>
         · 이 계산기는 과거 견적/마감내역 데이터 기반 참고용이며, 인쇄유무·발주수량·골지 두께 등에 따라 실제 단가는 달라질 수 있습니다.<br>
-        · 이 파일은 2026-08-04 데이터 기준 고정 스냅샷입니다. 새 견적서가 추가되면 Claude에게 다시 요청해서 갱신해주세요.
+        · 이 파일은 2026-10-08 데이터 기준 고정 스냅샷입니다. 새 견적서가 추가되면 Claude에게 다시 요청해서 갱신해주세요.
       </div>
     </div>
   </section>
@@ -181,13 +165,14 @@
 
 <script>
 const REG = {
-  carton: {n:307, slope:1.4156149466503043, intercept:-560.6845318563509, resid_std:111.96857624044883, xmin:651.0, xmax:1350.0},
-  inbox_tomson: {n:144, slope:0.6405963480859053, intercept:-62.74600623686288, resid_std:68.9767718375557, xmin:386.0, xmax:950.0},
-  inbox_auto: {n:14, slope:0.9748870298546949, intercept:-311.4511666010984, resid_std:63.63758937545026, xmin:581.0, xmax:910.0},
-  pad_partition: {n:15, slopes:[1.4383494568872492, 1.579182719504652], intercept:-73.80283943035647, resid_std:260.4920115644014,
-    ranges:{area1000:[11.008,218.5], go:[0.0,235.0]}},
-  pad_flat: {n:27, slope:0.3591529953766714, intercept:138.7531407600215, resid_std:173.37989626256976, xmin:18.042, xmax:1000.0}
+  carton: {n:649, slope:1.5398221130186875, intercept:-650.7847557129995, half_abs:140.98033016355487, half_pct:0.16513127254118723, xmin:651.0, xmax:1350.0},
+  inbox: {n:335, slope:0.6143345252550398, intercept:-42.940206396450876, half_abs:72.54225652361269, half_pct:0.20759711878594972, xmin:150.0, xmax:950.0},
+  pad_partition: {n:27, slopes:[0.6231283779539282, 3.240149487176947], intercept:-51.39552993261546, half_abs:298.6232160158594,
+    ranges:{area1000:[9.625,218.5], go:[0.0,245.0]}},
+  pad_flat: {n:43, slope:0.26256426676542927, intercept:231.70039727149154, half_abs:241.41958591839762, half_pct:0.9336344625166035, xmin:6.889, xmax:1000.0}
 };
+// half_pct가 있는(카톤·인박스) 조합은 예상단가 대비 비율로 오차범위 계산, 없으면(패드류) 절대금액(half_abs) 사용 — 엑셀과 동일 로직
+const PCT_MODE = {carton:true, inbox:true, pad_partition:false, pad_flat:false};
 
 const PLATE = [
   {kind:"수지대", gubun:"카톤(아웃)", n:67, mean:98115, median:94000, min:40000, max:243600},
@@ -195,7 +180,7 @@ const PLATE = [
   {kind:"수지대", gubun:"패드", n:1, mean:176000, median:176000, min:176000, max:176000},
   {kind:"수지대", gubun:"기타", n:5, mean:86792, median:80000, min:65440, max:114520},
   {kind:"목형대", gubun:"카톤(아웃)", n:4, mean:143750, median:140000, min:120000, max:175000},
-  {kind:"목형대", gubun:"인박스", n:40, mean:190128, median:188000, min:145000, max:245000},
+  {kind:"목형대", gubun:"인박스", n:41, mean:191100, median:188000, min:145000, max:245000},
   {kind:"목형대", gubun:"패드", n:6, mean:176333, median:186000, min:115000, max:248000},
   {kind:"목형대", gubun:"기타", n:2, mean:128000, median:128000, min:128000, max:128000}
 ];
@@ -203,35 +188,37 @@ const PLATE = [
 function fmt(n){ return Math.round(n).toLocaleString('ko-KR'); }
 function clamp(v, lo, hi){ return Math.max(lo, Math.min(v, hi)); }
 
-function computeSingle(reg, x){
+function computeSingle(reg, x, pctMode){
   const cx = clamp(x, reg.xmin, reg.xmax);
   const est = Math.max(Math.round(reg.intercept + reg.slope * cx), 0);
-  const rs = reg.resid_std;
-  const lo = Math.max(est - Math.round(rs), 0);
-  const hi = est + Math.round(rs);
+  const half = pctMode ? est * reg.half_pct : reg.half_abs;
+  const ratio = pctMode ? reg.half_pct : half / Math.max(est,1);
+  const lo = Math.max(est - Math.round(half), 0);
+  const hi = est + Math.round(half);
   const outOfRange = (x < reg.xmin || x > reg.xmax);
-  const lowConf = (reg.n < 8) || (rs / Math.max(est,1) > 0.35);
+  const lowConf = (reg.n < 8) || (ratio > 0.35);
   return {est, lo, hi, outOfRange, lowConf, obsRange: `${reg.xmin.toFixed(0)}~${reg.xmax.toFixed(0)}`};
 }
 
-function computeMulti(reg, xs){
+function computeMulti(reg, xs, pctMode){
   const keys = Object.keys(reg.ranges);
   const cxs = keys.map((k,i)=> clamp(xs[i], reg.ranges[k][0], reg.ranges[k][1]));
   let est = reg.intercept;
   reg.slopes.forEach((s,i)=> est += s*cxs[i]);
   est = Math.max(Math.round(est), 0);
-  const rs = reg.resid_std;
-  const lo = Math.max(est - Math.round(rs), 0);
-  const hi = est + Math.round(rs);
+  const half = pctMode ? est * reg.half_pct : reg.half_abs;
+  const ratio = pctMode ? reg.half_pct : half / Math.max(est,1);
+  const lo = Math.max(est - Math.round(half), 0);
+  const hi = est + Math.round(half);
   let outOfRange = false;
   keys.forEach((k,i)=>{ if(xs[i] < reg.ranges[k][0] || xs[i] > reg.ranges[k][1]) outOfRange = true; });
-  const lowConf = (reg.n < 8) || (rs / Math.max(est,1) > 0.35);
+  const lowConf = (reg.n < 8) || (ratio > 0.35);
   return {est, lo, hi, outOfRange, lowConf};
 }
 
 function renderResult(prefix, r, obsLabel){
   document.getElementById(prefix+"_price").textContent = fmt(r.est) + "원";
-  document.getElementById(prefix+"_range").textContent = fmt(r.lo) + " ~ " + fmt(r.hi) + "원 (참고: 오차범위 ±1σ)";
+  document.getElementById(prefix+"_range").textContent = fmt(r.lo) + " ~ " + fmt(r.hi) + "원 (참고: 오차범위)";
   const warnEl = document.getElementById(prefix+"_warn");
   let msgs = [];
   if (r.outOfRange) msgs.push(`관측범위 밖(${obsLabel}) — 추정 부정확할 수 있음`);
@@ -246,7 +233,7 @@ function updateCarton(){
   const g = parseFloat(document.getElementById('c_g').value)||0;
   const sum = j+p+g;
   document.getElementById('c_sum').textContent = fmt(sum);
-  const r = computeSingle(REG.carton, sum);
+  const r = computeSingle(REG.carton, sum, PCT_MODE.carton);
   renderResult('c', r, `사이즈합:${REG.carton.xmin.toFixed(0)}~${REG.carton.xmax.toFixed(0)}mm`);
 }
 
@@ -257,21 +244,8 @@ function updateInbox(){
   const sum = j+p+g;
   document.getElementById('i_sum').textContent = fmt(sum);
 
-  const rt = computeSingle(REG.inbox_tomson, sum);
-  renderResult('i_tom', rt, `사이즈합:${REG.inbox_tomson.xmin.toFixed(0)}~${REG.inbox_tomson.xmax.toFixed(0)}mm`);
-
-  const autoOk = (j+p>=400) && (p>=160) && (p+g>=285);
-  const priceEl = document.getElementById('i_auto_price');
-  const rangeEl = document.getElementById('i_auto_range');
-  const warnEl = document.getElementById('i_auto_warn');
-  if (!autoOk){
-    priceEl.innerHTML = '<span class="unavail">자동 불가</span>';
-    rangeEl.textContent = "사이즈 조건 미충족 (장+폭≥400, 폭≥160, 폭+고≥285mm)";
-    warnEl.style.display = "none";
-  } else {
-    const ra = computeSingle(REG.inbox_auto, sum);
-    renderResult('i_auto', ra, `사이즈합:${REG.inbox_auto.xmin.toFixed(0)}~${REG.inbox_auto.xmax.toFixed(0)}mm`);
-  }
+  const r = computeSingle(REG.inbox, sum, PCT_MODE.inbox);
+  renderResult('i', r, `사이즈합:${REG.inbox.xmin.toFixed(0)}~${REG.inbox.xmax.toFixed(0)}mm`);
 }
 
 function updatePad(){
@@ -283,10 +257,10 @@ function updatePad(){
   document.getElementById('p_area').textContent = fmt(area);
   document.getElementById('p_area1000').textContent = area1000.toFixed(1);
 
-  const rp = computeMulti(REG.pad_partition, [area1000, g]);
+  const rp = computeMulti(REG.pad_partition, [area1000, g], PCT_MODE.pad_partition);
   renderResult('p_part', rp, `면적1000:${REG.pad_partition.ranges.area1000[0].toFixed(0)}~${REG.pad_partition.ranges.area1000[1].toFixed(0)} / 고:${REG.pad_partition.ranges.go[0].toFixed(0)}~${REG.pad_partition.ranges.go[1].toFixed(0)}mm`);
 
-  const rf = computeSingle(REG.pad_flat, area1000);
+  const rf = computeSingle(REG.pad_flat, area1000, PCT_MODE.pad_flat);
   renderResult('p_flat', rf, `면적1000:${REG.pad_flat.xmin.toFixed(0)}~${REG.pad_flat.xmax.toFixed(0)}`);
 }
 
